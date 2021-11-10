@@ -1,4 +1,8 @@
-# H_HDB
+<img src="img/path28.png" alt="HHDB Logo">
+
+<br>
+
+# Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
@@ -12,7 +16,7 @@ Desenvolvida por [Eric Brasil](ericbrasiln.github.io) como parte de pesquisa aca
 
 ## Índice
 
-- [H_HDB](#h_hdb)
+- [Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB](#ferramenta-heurística-para-a-hemeroteca-digital-brasileira---h_hdb)
   - [Índice](#índice)
   - [Introdução](#introdução)
   - [Instalação](#instalação)
@@ -40,7 +44,7 @@ Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os 
 
 ### Python
 
-Essa ferramenta foi escrita em [Python 3.8](https://www.python.org/). Esta é uma linguagem de programação que te permite trabalhar rapidamente e integrar diferentes sistemas com maior eficiência.
+Essa ferramenta foi escrita em [Python 3.9](https://www.python.org/). Esta é uma linguagem de programação que te permite trabalhar rapidamente e integrar diferentes sistemas com maior eficiência.
 
 Para executar o arquivo `.py` é preciso instalar o Python3 em seu computador.
 
@@ -61,14 +65,14 @@ Exemplo de como executar utilizando o terminal do Linux, após instalar o Python
    ```
 1. Execute o arquivo usando Python3.8
    ```sh
-   $ python3.8 run.py
+   $ python3 h_hdb.py
    ```
 #### Bibliotecas e módulos
 
 - **urllib.requests**: módulo do Python que ajuda a acessar urls.
 [Saiba mais.](https://docs.python.org/pt-br/3/library/urllib.request.htmll)
-- **Selenium**: o [Selenium](https://www.selenium.dev/documentation/en/) é um conjunto de ferramentas para automatização de utilização de browser.
-- **webdriver.manager**: explicar....
+- **Selenium**: o [Selenium](https://www.selenium.dev/documentation/en/) é um conjunto de ferramentas para automatização de utilização de navegadores.
+- **webdriver.manager**: biblioteca que auxilia na instalação e configuração dos drivers de navegadores. [Daiba mais](https://pypi.org/project/webdriver-manager/)
 - **pandas**: [Pandas](https://pandas.pydata.org/) é uma biblioteca escrita em Python para manipulação e análise de dados. 
 
 ***
@@ -93,7 +97,7 @@ Orientações para busca:
       - É possível buscar todos os periódicos digitando `Todos`
 Digite o período de busca: 
 ``` 
-A busca será efetuada em todos os acervos existentes para essa configuração, após a inclusão do termo da busca.
+A busca será efetuada em todos os acervos existentes para essa configuração (`3 - Periódico: Todos`), após a inclusão do termo da busca.
 
 ```
 4 - Termo da busca
@@ -128,6 +132,7 @@ O programa retorna os seguintes resultados:
         - Termo da busca
         - Lista de acervos com ocorrências (máx. de 100) e quantidade de ocorrências
         - Total de acervos com ocorrências (máx. de 100)
+        - Informações adicionais: Total de páginas pesquisadas; Total de acervos pesquisados; Total de ocorrências e Frequência de ocorrências por página.
         ```
         O título do arquivo tem o seguinte padrão: `GERAL_{termo da pesquisa}_{data e hora da busca}.txt`
    - Acervo: Com os dados de cada acervo
@@ -143,25 +148,41 @@ O programa retorna os seguintes resultados:
         ``` 
         - Data e hora da busca
         - Termo da busca
-        -  Lista de acervos com ocorrências (máx. de 100) que não puderam ser acessados
+        - Acervo com ocorrência que não pode ser acessado
         ```
-        padrão: `ERRO_{número do acervo}_{data e hora da busca}.txt`
-
+        O título do arquivo tem o seguinte padrão: `ERRO_{número do acervo}_{data e hora da busca}.txt`
+   - INFORMAÇÕES GERAIS: registra dados gerais relativo ao quantitativo de acervos e páginas pesquisadas na busca e a quantidade de ocorrências, assim como a frequência de ocorrências por página.
+        - Acervo
+        - Total de Páginas
+        - Total de Ocorrências
+        - Frequência de ocorrências X páginas. 
+        O título do arquivo tem o seguinte padrão: `{infos_acervos}_{período}_{page01 ou 02}.csv`
 4. `ARQUIVOS_IMG`: Cria um diretório `HDB/{termo da busca}/{data da busca}/ARQUIVOS_IMG`e salva as imagens das páginas com ocorrências. O nome do arquivo é a combinação no número do acervo com o número geral da página. Ex: `168319_02_12603.jpg`
+
+Estrutura de diretórios:
+
+```
+HDB
+├── {termo da busca}
+│   ├── {data}
+│   │   ├── CSV
+│   │   ├── RELATÓRIOS
+│   │   ├── ARQUIVOS_IMG
+```
 
 ***
 
 ## Como citar?
 
 ```
-@misc{heuristica_hdb2021,
+@misc{h_hdb2021,
   author = {Eric Brasil},
-  title = {Heurística HDB},
+  title = {Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB},
   year = {2021},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/ericbrasiln/heuristica_hdb}}
-  note = {Online; accessed 05 Jun 2021}
+  howpublished = {\url{https://github.com/ericbrasiln/h_hdb}}
+  note = {Online; accessed 10 Oct 2021}
 }
 ```
 
@@ -171,7 +192,7 @@ O programa retorna os seguintes resultados:
 
 Agradeço ao LABHDUFBA pela parceria e possibilidades de aprendizado e desenvolvimento de ferramentas e reflexões para a pesquisa em história e humanidades digitais.
 
-A **Heurística HDB** não seria possível sem a participação ativa de Leonardo F. Nascimento e Gabriel Andrade.
+A **H_HDB** não seria possível sem a participação ativa de Leonardo F. Nascimento e Gabriel Andrade.
 
 ***
 

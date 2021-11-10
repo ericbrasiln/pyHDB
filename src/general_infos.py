@@ -1,5 +1,5 @@
 '''
-title: H_HDB
+title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
 author: Eric Brasil
 description: Funções relacionadas à coleta de informações gerais da busca.
 '''
@@ -16,7 +16,7 @@ def get_infos(driver):
     infos = {}
     # Usar BeautifulSoup para pegar o conteúo
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    totals_div = soup.find('div', id='totals_div')
+    totals_div = soup.find('div', id='totaisdiv')
     div_pages = totals_div.find('div', id='paginastotdiv')
     total_pages = div_pages.find('span', id='PaginasTotalLbl').text
     div_acervos = totals_div.find('div', id='acervostotdiv')

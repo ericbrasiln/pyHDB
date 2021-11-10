@@ -1,7 +1,7 @@
 '''
-title: H_HDB
+title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
 author: Eric Brasil
-date: 2021-10-04
+date: 2021-11-10
 description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).
 Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.
 license: MIT
@@ -33,11 +33,11 @@ date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 print('=-'*50)
 print('\nFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\n'
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
-    '\n- Essa ferramenta não possui fins lucrativos nem predende acessar dados sigilosos ou alterar\n'
+    '\n- Essa ferramenta não possui fins lucrativos nem predende acessar dados sigilosos ou alterar'\
     'informações nos servidores da instituição.\n'
     '\n- Tem como objetivo auxilixar pesquisadores e pesquisadoras a registrarem com precisão as\n'
     'etapas de sua pesquisa e garantir o rigor metodológico.\n'
-    '\nPortanto, é uma ferramenta heurística digital. Seu desenvolvimento está no âmbito das\n'
+    'Portanto, é uma ferramenta heurística digital. Seu desenvolvimento está no âmbito das\n'
     'pesquisas realizadas no curso de História do IHLM/Unilab e do LABHDUFBA.\n'
     '\n- Os resultados da pesquisa serão publicados em artigo científico avaliado por pares e\n'
     'seu código e dataset serão disponibilizados publicamente, com licença MIT. \n'
@@ -49,12 +49,14 @@ print('=-'*50)
 
 # Definição das opções do driver
 chrome_options = Options()  
-chrome_options.add_argument("--headless")  
+chrome_options.add_argument("--headless") 
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--start-maximized")
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 # Passa a url para o driver
 driver.get(url)
 
-# Imprimir informações sobre os parâmetros de busca
+# Imprime informações sobre os parâmetros de busca
 print(
       '-=-=-=-=-=-=- Definindo os parâmetros da busca -=-=-=-=-=-=-\n'
       'Nessa versão do programa, a busca inicial é estabelecida pela opção local. É possível\n'
@@ -131,14 +133,16 @@ directory = os.path.join('HDB', final_search)
 l_bibs = get_bibs(driver, search, directory, period)
 # Função para tratar a lista de acervos
 final_bibs = bib_list(l_bibs)
+print(f'\n- Encontradas {len(final_bibs)} bibliotecas com ocorrências.')
 # Chamar a função para encontrar informações gerais da busca
-infos_dict = get_infos(driver)
-print(f'\n- Total de acervos com ocorrências (máx. de 100): {len(l_bibs)}\n')
+if len(final_bibs) > 0:
+      infos_dict = get_infos(driver)
+      print(f'\n- Total de acervos com ocorrências (máx. de 100): {len(l_bibs)}\n')
+else:
+      pass
 # Se a lista não possuir valores, resultados não foram encontrados e o programa se encerra.
 if len(l_bibs) == 0:
-      print(
-            'Sem resultados encontrados.\n'
-            '=-=-=-=-=-Fim da raspagem.=-=-=-=-=-')
+      print('=-=-=-=-=-Fim da raspagem.=-=-=-=-=-')
 else:
       # Chamar a função para criar o relatório geral da busca
       report_search(directory, search_term, date_time, l_bibs, place, period, journal, infos_dict)

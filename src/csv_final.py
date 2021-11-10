@@ -1,10 +1,12 @@
 '''
-title: H_HDB
+title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
 author: Eric Brasil
 description: Funções relacionadas com a criação e concatenação de CSV gerados.
 '''
 import pandas as pd 
-import os, time, glob
+import os
+import time
+import glob
 
 #Define o dia e a hora
 date_time = time.strftime("%Y-%m-%d_%H-%M-%S") 

@@ -1,7 +1,7 @@
 '''
-title: H_HDB
+title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
 author: Eric Brasil
-description: Funções com funções relacionadas à definição de parâmetros para a pesquisa
+description: Funções relacionadas à definição de parâmetros para a pesquisa
 '''
 import time
 from selenium.webdriver.common.by import By

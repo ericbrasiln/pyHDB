@@ -1,5 +1,5 @@
 '''
-title: H_HDB
+title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
 author: Eric Brasil
 description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).
 Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.

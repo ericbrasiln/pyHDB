@@ -1,5 +1,5 @@
 '''
-title: H_HDB
+title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
 author: Eric Brasil
 description: Funções relacionadas às imagens das páginas de jornais com ocorrências
 '''
