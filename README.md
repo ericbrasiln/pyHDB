@@ -4,7 +4,8 @@
 
 # Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![DOI](https://zenodo.org/badge/413270192.svg)](https://zenodo.org/badge/latestdoi/413270192)
+
 
 Ferramenta de auxílio metodológico para pesquisa na [Hemeroteca Digital Brasileira](memoria.br.br) da Biblioteca Nacional.
 
@@ -177,7 +178,7 @@ HDB
 ```
 @software{Eric_h_hdb2021,
   author = {Eric Brasil},
-  doi = {}
+  doi = {10.5281/zenodo.5696671}
   title = {Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB},
   url = {https://github.com/ericbrasiln/H_HDB}
   version = {1.0}
