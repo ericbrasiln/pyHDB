@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Se você utilizar esse programa, por favor cite como referenciado abaixo."
+authors:
+  - family-names: Brasil
+    given-names: Eric
+    orcid: https://orcid.org/0000-0001-5067-8475
+title: "Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB"
+type: "software"
+version: 1.0
+doi: 
+date-released: 
+url: "https://github.com/ericbrasiln/H_HDB"

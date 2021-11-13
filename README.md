@@ -1,4 +1,4 @@
-<img src="img/path28.png" alt="HHDB Logo">
+<img src="img/banner.png" alt="HHDB Logo">
 
 <br>
 
@@ -72,7 +72,7 @@ Exemplo de como executar utilizando o terminal do Linux, após instalar o Python
 - **urllib.requests**: módulo do Python que ajuda a acessar urls.
 [Saiba mais.](https://docs.python.org/pt-br/3/library/urllib.request.htmll)
 - **Selenium**: o [Selenium](https://www.selenium.dev/documentation/en/) é um conjunto de ferramentas para automatização de utilização de navegadores.
-- **webdriver.manager**: biblioteca que auxilia na instalação e configuração dos drivers de navegadores. [Daiba mais](https://pypi.org/project/webdriver-manager/)
+- **webdriver.manager**: biblioteca que auxilia na instalação e configuração dos drivers de navegadores. [Saiba mais](https://pypi.org/project/webdriver-manager/)
 - **pandas**: [Pandas](https://pandas.pydata.org/) é uma biblioteca escrita em Python para manipulação e análise de dados. 
 
 ***
@@ -175,13 +175,13 @@ HDB
 ## Como citar?
 
 ```
-@misc{h_hdb2021,
+@software{Eric_h_hdb2021,
   author = {Eric Brasil},
+  doi = {}
   title = {Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB},
+  url = {https://github.com/ericbrasiln/H_HDB}
+  version = {1.0}
   year = {2021},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/ericbrasiln/h_hdb}}
   note = {Online; accessed 10 Oct 2021}
 }
 ```
