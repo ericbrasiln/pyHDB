@@ -1,5 +1,5 @@
 '''
-title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
+title: pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira
 author: Eric Brasil
 date: 2021-11-10
 description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).
