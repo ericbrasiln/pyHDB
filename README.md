@@ -1,8 +1,10 @@
-<img src="img/banner.png" alt="HHDB Logo">
+<img src="img/banner.png" alt="pyHDB Logo">
 
 <br>
 
-# Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB
+# pyHDB
+
+## Ferramenta heurística para a Hemeroteca Digital Brasileira
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![DOI](https://zenodo.org/badge/413270192.svg)](https://zenodo.org/badge/latestdoi/413270192)
 
@@ -17,7 +19,7 @@ Desenvolvida por [Eric Brasil](ericbrasiln.github.io) como parte de pesquisa aca
 
 ## Índice
 
-- [Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB](#ferramenta-heurística-para-a-hemeroteca-digital-brasileira---h_hdb)
+- [pyHDB](#pyhdb)
   - [Índice](#índice)
   - [Introdução](#introdução)
   - [Instalação](#instalação)
@@ -64,9 +66,9 @@ Exemplo de como executar utilizando o terminal do Linux, após instalar o Python
    ```sh
    $ pip3 install -r requirements.txt
    ```
-1. Execute o arquivo usando Python3.8
+1. Execute o arquivo usando Python3
    ```sh
-   $ python3 h_hdb.py
+   $ python3 run_pyHDB.py
    ```
 #### Bibliotecas e módulos
 
@@ -179,8 +181,8 @@ HDB
 @software{Eric_h_hdb2021,
   author = {Eric Brasil},
   doi = {10.5281/zenodo.5696671}
-  title = {Ferramenta heurística para a Hemeroteca Digital Brasileira - H_HDB},
-  url = {https://github.com/ericbrasiln/H_HDB}
+  title = {pyHDB - Ferramenta heurística para a Hemeroteca Digital Brasileira},
+  url = {https://github.com/ericbrasiln/pyHDB}
   version = {1.0}
   year = {2021},
   note = {Online; accessed 10 Oct 2021}
@@ -193,7 +195,7 @@ HDB
 
 Agradeço ao LABHDUFBA pela parceria e possibilidades de aprendizado e desenvolvimento de ferramentas e reflexões para a pesquisa em história e humanidades digitais.
 
-A **H_HDB** não seria possível sem a participação ativa de Leonardo F. Nascimento e Gabriel Andrade.
+A **pyHDB** não seria possível sem a participação ativa de Leonardo F. Nascimento e Gabriel Andrade.
 
 ***
 

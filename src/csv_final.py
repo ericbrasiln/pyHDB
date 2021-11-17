@@ -1,5 +1,5 @@
 '''
-title: Ferramenta Heurística para a Hemeroteca Digital Brasileira - H_HDB
+title: pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira
 author: Eric Brasil
 description: Funções relacionadas com a criação e concatenação de CSV gerados.
 '''
