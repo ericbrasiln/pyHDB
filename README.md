@@ -68,7 +68,7 @@ Exemplo de como executar utilizando o terminal do Linux, após instalar o Python
    ```
 1. Execute o arquivo usando Python3
    ```sh
-   $ python3 h_hdb.py
+   $ python3 run_pyHDB.py
    ```
 #### Bibliotecas e módulos
 
