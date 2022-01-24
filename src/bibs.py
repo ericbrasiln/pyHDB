@@ -5,12 +5,13 @@ description: Funções relacionadas ao tratamento das listas de acervos a serem 
 '''
 import re, time
 from general_infos import get_infos_acervos
+from selenium.webdriver.common.by import By
 
 def get_bibs(driver, search, directory, period):
     '''
     Função para as numerações dos acervos (bibs) com ocorrências da busca.
     '''
-    list_of_bibs = driver.find_elements_by_id('BibMaisButton')
+    list_of_bibs = driver.find_elements(By.ID, 'BibMaisButton')
     l_bibs = []
     for bib in list_of_bibs:
         value = bib.get_attribute('onmouseover')
@@ -23,9 +24,9 @@ def get_bibs(driver, search, directory, period):
             #chama a função para encontrar infos gerais dos acervos
             get_infos_acervos(driver, directory, period, 'page01')
     if len(l_bibs) == 50:
-        next_btn = driver.find_element_by_xpath('//*[@id="ListaRadGrid_ctl00"]/tfoot/tr/td/div/div[3]/button[1]').click()
+        next_btn = driver.find_element(By.XPATH, '//*[@id="ListaRadGrid_ctl00"]/tfoot/tr/td/div/div[3]/button[1]').click()
         time.sleep(2)
-        list_of_bibs = driver.find_elements_by_id('BibMaisButton')
+        list_of_bibs = driver.find_elements(By.ID, 'BibMaisButton')
         for bib in list_of_bibs:
             value = bib.get_attribute('onmouseover')
             value1 = value.replace('javascript:showMenu(event,','')

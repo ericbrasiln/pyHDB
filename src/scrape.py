@@ -15,6 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.chrome.service import Service
 
 def scrapeDados(url, search, final_bib, directory, date, date_time):
     '''
@@ -23,8 +24,9 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
     '''
     chrome_options = Options()  
     chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")  
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    chrome_options.add_argument("--no-sandbox")
+    s=Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=s, options=chrome_options)
     try:
         driver.get(url)
         time.sleep(1)
@@ -84,18 +86,18 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
             print('Botão zoom não foi clicado')
     try:
         # Buscar ocorrências e respectivos dados
-        cur, tot = driver.find_element_by_id("OcorNroLbl").text.strip().split("/")
+        cur, tot = driver.find_element(By.ID, "OcorNroLbl").text.strip().split("/")
         time.sleep(2)
         for i in range(1,int(tot)+1):
-            term = driver.find_element_by_id("PesquisarTxt").get_attribute("value")
-            folder = driver.find_element_by_id("AcervoDescLbl").text
+            term = driver.find_element(By.ID, "PesquisarTxt").get_attribute("value")
+            folder = driver.find_element(By.ID, "AcervoDescLbl").text
             folder = folder.replace(',',' ')
-            pag = driver.find_element_by_id("hPagFis").get_attribute("value")
-            p = driver.find_element_by_id("PagAtualTxt").get_attribute("value")
+            pag = driver.find_element(By.ID, "hPagFis").get_attribute("value")
+            p = driver.find_element(By.ID, "PagAtualTxt").get_attribute("value")
             # Tentar encontrar Ano e Edição no padrão recorrente, se estiver fora do padrão
             # insere NA para ambas
             try:
-                year, issue = driver.find_element_by_id("PastaTxt").get_attribute("title").strip().split("\\")
+                year, issue = driver.find_element(By.ID, "PastaTxt").get_attribute("title").strip().split("\\")
             except:
                 year = 'Ano NA'
                 issue = 'Edição   NA'
@@ -127,7 +129,7 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
             time.sleep(2)
             # Buscar próxima página de ocorrência
             if (i!=int(tot)):
-                next_pg = driver.find_element_by_id("OcorPosBtn")
+                next_pg = driver.find_element(By.ID, "OcorPosBtn")
                 ActionChains(driver).move_to_element(next_pg).click(next_pg).perform()
                 WebDriverWait(driver, 50).until(
                     EC.text_to_be_present_in_element(

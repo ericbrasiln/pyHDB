@@ -23,6 +23,23 @@ date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 # Cria lista final para inserção dos dados que serão salvos no CSV
 final_list = []
 
+# Imprimir informações gerais sobre o programa
+print('=-'*50)
+print('\nEsse script é parta da pyHDB, Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\n'
+    '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
+    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
+    'informações nos servidores da instituição.\n'
+    '\n- Tem como objetivo auxilixar pesquisadores e pesquisadoras a registrarem com precisão as '\
+    'etapas \nde sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
+    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab \ne do LABHDUFBA.\n'
+    '\n- Os resultados da pesquisa serão publicados em artigo científico avaliado por pares e seu código \ne '\
+    'dataset serão disponibilizados publicamente, com licença MIT.\n'
+    '\n- Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso.\n'
+    '\n- A busca foi elaborada a partir das demandas de pesquisa pessoais e serão explicadas no artigo.\n'
+    '\n- Esse script analisa um acervo, ou uma lista de acervos definidas pelo usuário. Foi pensado para sanar\n'
+    'erros no processo de raspagem que podem acontecer, principalmente em buscas com milhares de ocorrências.')
+print('=-'*50)
+
 # Definição da lista de acervos
 bibs_list= list()
 while True:

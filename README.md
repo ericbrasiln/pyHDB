@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![DOI](https://zenodo.org/badge/413270192.svg)](https://zenodo.org/badge/latestdoi/413270192)
 
 
-Ferramenta de auxílio metodológico para pesquisa na [Hemeroteca Digital Brasileira](memoria.br.br) da Biblioteca Nacional.
+Ferramenta de auxílio metodológico para pesquisa na [Hemeroteca Digital Brasileira](memoria.bn.br/hdb) da Biblioteca Nacional.
 
 Desenvolvida por [Eric Brasil](ericbrasiln.github.io) como parte de pesquisa acadêmica da área de História Digital.
 
@@ -18,8 +18,8 @@ Desenvolvida por [Eric Brasil](ericbrasiln.github.io) como parte de pesquisa aca
 ***
 
 ## Índice
-
 - [pyHDB](#pyhdb)
+  - [Ferramenta heurística para a Hemeroteca Digital Brasileira](#ferramenta-heurística-para-a-hemeroteca-digital-brasileira)
   - [Índice](#índice)
   - [Introdução](#introdução)
   - [Instalação](#instalação)
@@ -27,6 +27,7 @@ Desenvolvida por [Eric Brasil](ericbrasiln.github.io) como parte de pesquisa aca
       - [Bibliotecas e módulos](#bibliotecas-e-módulos)
   - [Definindo os parâmetros da busca](#definindo-os-parâmetros-da-busca)
   - [Resultados](#resultados)
+  - [Opção de busca por acervo ou lista de acervos específicos](#opção-de-busca-por-acervo-ou-lista-de-acervos-específicos)
   - [Como citar?](#como-citar)
   - [Agradecimentos](#agradecimentos)
   - [Licença](#licença)
@@ -49,7 +50,7 @@ Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os 
 
 Essa ferramenta foi escrita em [Python 3.9](https://www.python.org/). Esta é uma linguagem de programação que te permite trabalhar rapidamente e integrar diferentes sistemas com maior eficiência.
 
-Para executar o arquivo `.py` é preciso instalar o Python3 em seu computador.
+Para executar o arquivo `.py` é preciso instalar o Python3 em seu computador, assim como as bibliotecas utilizadas na ferramentas.
 
 [Clique aqui](https://python.org.br/instalacao-windows/) para um tutorial de instalação do Python no Windows, [clique aqui](https://python.org.br/instalacao-linux/) para Linux e [clique aqui](https://python.org.br/instalacao-mac/)
 para Mac.
@@ -68,8 +69,9 @@ Exemplo de como executar utilizando o terminal do Linux, após instalar o Python
    ```
 1. Execute o arquivo usando Python3
    ```sh
-   $ python3 run_pyHDB.py
+   $ python3 pyHDB.py
    ```
+
 #### Bibliotecas e módulos
 
 - **urllib.requests**: módulo do Python que ajuda a acessar urls.
@@ -82,7 +84,11 @@ Exemplo de como executar utilizando o terminal do Linux, após instalar o Python
 
 ## Definindo os parâmetros da busca
 
-Nessa versão do programa, a busca inicial é estabelecida pela opção local. 
+Ao executar o programa, o usuário verá as informações introdutórias da ferramentas, como na imagem abaixo:
+
+<img src="img/intro.png" alt="intro pyHDB">
+
+Em seguida, o usuário deverá inserir os parâmetros de busca. Lembrando que nessa versão do programa, a busca inicial é estabelecida pela opção `local`. 
 
 ``` 
 1- Local
@@ -94,12 +100,16 @@ Digite o local de busca:
 É possível incluir uma opção de recorte temporal em seguida. 
 
 ```
+
 2 - Período
 Orientações para busca:
       - O recorte deve ser escerito de forma idêntica às opções listadas na página da HDB;
       - É possível buscar todos os periódicos digitando `Todos`
 Digite o período de busca: 
 ``` 
+
+>**OBS**: Lembrando que os parâmetros `Local` e `Período` devem ser escritos de forma idêntica às opções listadas na [página da HDB](http://memoria.bn.br/hdb/). Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar `RJ`. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar `1910 - 1919`, pois as opções de período existentes na HDB estão organizadas por décadas.
+
 A busca será efetuada em todos os acervos existentes para essa configuração (`3 - Periódico: Todos`), após a inclusão do termo da busca.
 
 ```
@@ -175,6 +185,16 @@ HDB
 
 ***
 
+## Opção de busca por acervo ou lista de acervos específicos
+
+A ferramenta `pyHDB` permite a busca por acervos específicos, ou lista de acervos específicos. Para tanto é preciso executar o arquivo `pyHDB_acervos.py`.
+
+O usuário deverá informar o número do acervo ou a lista de acervos que deseja pesquisar.
+
+Essa opção foi desenvolvida para sanar erros no processo de raspagem que podem acontecer principalmente em buscas com milhares de ocorrências. Se algum acervo não for raspado corretamente pela ferramenta principal `pyHDB`, o usuário poderá executar o arquivo `pyHDB_acervos.py` para raspagem de acervos específicos.
+
+Ao final do processo, a ferramenta criará arquivos `csv`e relatórios em `txt` no mesmo padrão da ferramenta principal `pyHDB`. Além disso, retornará automaticamente um `csv`final fundindo os dados recém coletados com os dados já existentes (desde que a busca seja executada na mesma data).
+
 ## Como citar?
 
 ```
@@ -195,7 +215,7 @@ HDB
 
 Agradeço ao LABHDUFBA pela parceria e possibilidades de aprendizado e desenvolvimento de ferramentas e reflexões para a pesquisa em história e humanidades digitais.
 
-A **pyHDB** não seria possível sem a participação ativa de Leonardo F. Nascimento e Gabriel Andrade.
+A **pyHDB** não seria possível sem a participação ativa de Leonardo F. Nascimento (a quem devo o agradecimento pela sugestão do nome da ferramenta) e Gabriel Andrade.
 
 ***
 

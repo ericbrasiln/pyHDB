@@ -6,6 +6,7 @@ description: Funções relacionadas à coleta de informações gerais da busca.
 import pandas as pd
 import os
 from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
 
 def get_infos(driver):
     '''
@@ -43,11 +44,11 @@ def get_infos_acervos(driver, directory, period, page):
     # Criar lista para armazenar as informações
     infos_acervos_final = []
     # Encontrar tbody usando XPATH
-    tbody = driver.find_element_by_xpath('//*[@id="ListaRadGrid_ctl00"]/tbody')
+    tbody = driver.find_element(By.XPATH, '//*[@id="ListaRadGrid_ctl00"]/tbody')
     # Encontrar todos os tr e iterar
-    trs = tbody.find_elements_by_tag_name('tr')
+    trs = tbody.find_elements(By.TAG_NAME, 'tr')
     for tr in trs:
-        tds = tr.find_elements_by_tag_name('td')
+        tds = tr.find_elements(By.TAG_NAME, 'td')
         acervo = tds[0].text
         total_pages = tds[1].text
         total_occur = tds[2].text

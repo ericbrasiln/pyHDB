@@ -16,12 +16,12 @@ def zoom_in(driver):
     '''
     # Encontra e move até a barra de botões flutuantes
     actions = ActionChains(driver)
-    screen = driver.find_element_by_xpath('//*[@id="DocumentoImg"]')
+    screen = driver.find_element(By.XPATH, '//*[@id="DocumentoImg"]')
     actions.move_to_element(screen).perform()
-    btns = driver.find_element_by_id('ZoomUpdatePanel')
+    btns = driver.find_element(By.ID, 'ZoomUpdatePanel')
     actions.move_to_element(btns).perform()
     # Clica no botão de zoom
-    original = driver.find_element_by_xpath('//*[@id="ZoomInBtn"]').click()
+    original = driver.find_element(By.XPATH, '//*[@id="ZoomInBtn"]').click()
     # Aguarda carregar a página
     load_img = WebDriverWait(driver, 30).until(EC.invisibility_of_element((By.ID, 'updateprogressloaddiv')))
     time.sleep(3)
@@ -31,7 +31,7 @@ def get_img(driver, bib_final, pag, diretorio):
     Função para pegar os cookies e salvar a imagem após zoom
     '''
     # Encontra o link para a imagem
-    img_large = driver.find_element_by_css_selector("#DocumentoImg").get_attribute('src')
+    img_large = driver.find_element(By.CSS_SELECTOR, "#DocumentoImg").get_attribute('src')
     link_img = 'http://memoria.bn.br/docreader/'+str(img_large)
     img_name = bib_final +'_'+pag+'.jpg'
     # Criação da pasta de armazenamento e conferência se a mesma já existe
@@ -105,7 +105,7 @@ def get_img_small(driver,bib_final,pag,diretorio):
     Função para salvar a imagem na resolução inicial.
     '''
     try:
-        img_large = driver.find_element_by_css_selector("#DocumentoImg").get_attribute('src')
+        img_large = driver.find_element(By.CSS_SELECTOR, "#DocumentoImg").get_attribute('src')
         link_img = 'http://memoria.bn.br/docreader/'+img_large
         img_name = bib_final +'_'+pag+'.jpg'
         img_path = os.path.join(diretorio, 'ARQUIVOS_IMG')
