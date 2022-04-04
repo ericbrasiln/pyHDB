@@ -2,7 +2,9 @@
 
 ## A ferramenta
 
-asass
+Ferramenta desenvolvida sem fins lucrativos nem pretensão de acessar dados sigilosos ou alterar informações nos servidores da instituição.
+
+Os resultados da pesquisa serão publicados em artigo científico avaliado por pares na [Revista História da Historiografia](https://www.historiadahistoriografia.com.br/) em 2022.
 
 ## O autor
 
