@@ -58,7 +58,7 @@ driver.get(url)
 
 # Imprime informações sobre os parâmetros de busca
 print(
-      '-=-=-=-=-=-=- Definindo os parâmetros da busca -=-=-=-=-=-=-\n'
+      '\n-=-=-=-=-=-=- Definindo os parâmetros da busca -=-=-=-=-=-=-\n'
       'Nessa versão do programa, a busca inicial é estabelecida pela opção local. É possível\n'
       'incluir uma opção de recorte temporal em seguida. A busca será efetuada em todos os acervos\n'
       'existentes para essa configuração.'
