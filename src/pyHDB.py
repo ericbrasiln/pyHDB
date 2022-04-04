@@ -1,7 +1,6 @@
 '''
 title: pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira
 author: Eric Brasil
-date: 2021-11-10
 description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).
 Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.
 license: MIT
@@ -36,7 +35,7 @@ print('\nFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digita
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
     '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
     'informações nos servidores da instituição.\n'
-    '\n- Tem como objetivo auxilixar pesquisadores e pesquisadoras a registrarem com precisão as '\
+    '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as '\
     'etapas \nde sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
     '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab \ne do LABHDUFBA.\n'
     '\n- Os resultados da pesquisa serão publicados em artigo científico avaliado por pares e seu código \ne '\
@@ -98,10 +97,10 @@ print(f'\n- Definindo parâmetros da busca...')
 # Chama a função para encontrar e clicar na seta para abrir as opções de 'locais'
 set_place(driver, place)
 
-# Função para encontrar o parêmtro período
+# Função para encontrar o parâmetro período
 set_time(driver, period)
 
-# Função para encontrar o parêmetro periódico
+# Função para encontrar o parâmetro periódico
 set_journal(driver, journal)
 
 # Função para inserir o termo de busca
