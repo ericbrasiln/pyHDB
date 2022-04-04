@@ -13,7 +13,7 @@ def set_place(driver, local):
     Função para encontrar e enviar o parâmetro Local
     '''
     # Encontrar e clicar na seta para abrir as opções de 'locais'
-    local_arrow = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="UFCmb3_Arrow"]'))).click()
+    local_arrow = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="UFCmb3_Arrow"]'))).click()
     in_local = driver.find_element(By.ID, 'UFCmb3_DropDown')
     time.sleep(2)
     # Encontrar o parâmetro do local a ser pesquisado
@@ -22,20 +22,20 @@ def set_place(driver, local):
 
 def set_time(driver, periodo):
     '''
-    Função para encontrar o parêmtro período
+    Função para encontrar o parâmetro período
     '''
     # Encontrar e clicar no box para abrir as opções de 'período'
-    time_box = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodoCmb3_Input"]')))
+    time_box = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodoCmb3_Input"]')))
     time_box.click()
-    time.sleep(1)
+    time.sleep(3)
     periodo_Box = driver.find_element(By.ID, 'PeriodoCmb3_DropDown')
     # Encontrar o parâmetro do período a ser pesquisado
     time_op = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodo}')]").click()
-    time.sleep(2)
+    time.sleep(3)
 
 def set_journal(driver, periodico):
     '''
-    Função para encontrar o parêmetro periódico
+    Função para encontrar o parâmetro periódico
     '''
     # Encontrar e clicar na seta para abrir as opções de 'periódico'
     p_arrow = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodicoCmb3_Arrow"]'))).click()
