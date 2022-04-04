@@ -1,0 +1,16 @@
+[data-md-color-scheme="light pink"] {
+    --md-primary-fg-color:        #ff9292;
+    --md-primary-fg-color--light: #ff9292;
+    --md-primary-fg-color--dark:  #222222;
+  }
+
+[data-md-color-scheme="slate"] {
+    --md-hue: 210; 
+  }
+
+:root {
+    --md-primary-fg-color:        #ff9292;
+    --md-primary-fg-color--light: #ff9292;
+    --md-primary-fg-color--dark:  #222222;
+  }
+  

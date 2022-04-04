@@ -1,4 +1,4 @@
-# pycache
+# ignore directory __pycache__ in src/
 src/__pycache__/
 
 # documentation site build
