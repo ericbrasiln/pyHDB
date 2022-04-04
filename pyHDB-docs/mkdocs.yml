@@ -1,0 +1,46 @@
+site_name: Ferramenta heurística para a Hemeroteca Digital Brasileira
+#site_url: https://example.com/
+
+theme:
+  logo: img/logo.png
+  favicon: img/favicon.ico
+  name: material 
+  language: pt-BR
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink light
+      accent: red
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo noturno
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      accent: red
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo claro
+
+extra_css:
+  - stylesheets/extra.css
+
+repo_url: https://github.com/ericbrasiln/pyHDB
+repo_name: ericbrasiln/pyHDB
+
+plugins:
+  - git-revision-date
+
+markdown_extensions:
+  - pymdownx.emoji
+  - pymdownx.tilde
+  - pymdownx.mark
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+nav:
+    - Home: index.md
+    - Sobre: about.md
+    - Citação: citation.md
+    - Licença: license.md 
