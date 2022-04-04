@@ -34,7 +34,7 @@ Desenvolvida por [Eric Brasil](ericbrasiln.github.io) como parte de pesquisa aca
 
 ## Introdução
 
-Tem como objetivo auxilixar pesquisadores e pesquisadoras no processo de documentação e registro preciso das etapas de pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.
+Tem como objetivo auxiliar pesquisadores e pesquisadoras no processo de documentação e registro preciso das etapas de pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.
 
 Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab e do [LABHDUFBA](http://www.labhd.ufba.br).
 
@@ -103,7 +103,7 @@ Digite o local de busca:
 
 2 - Período
 Orientações para busca:
-      - O recorte deve ser escerito de forma idêntica às opções listadas na página da HDB;
+      - O recorte deve ser escrito de forma idêntica às opções listadas na página da HDB;
       - É possível buscar todos os periódicos digitando `Todos`
 Digite o período de busca: 
 ``` 
@@ -115,7 +115,7 @@ A busca será efetuada em todos os acervos existentes para essa configuração (
 ```
 4 - Termo da busca
 Orientações para busca:
-      - Coloque o termo entre aspas duplas para espressões exatas;
+      - Coloque o termo entre aspas duplas para expressões exatas;
       - Não use acentos;
       - Não mais que três palavras
 Digite o termo de busca:
