@@ -38,6 +38,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.highlight
   - pymdownx.superfences
+  - footnotes
 
 nav:
     - Home: index.md
