@@ -29,7 +29,7 @@ print('\nEsse script é parta da pyHDB, Ferramenta de auxílio metodológico par
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
     '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
     'informações nos servidores da instituição.\n'
-    '\n- Tem como objetivo auxilixar pesquisadores e pesquisadoras a registrarem com precisão as '\
+    '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as '\
     'etapas \nde sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
     '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab \ne do LABHDUFBA.\n'
     '\n- Os resultados da pesquisa serão publicados em artigo científico avaliado por pares e seu código \ne '\
@@ -50,7 +50,7 @@ while True:
         break
 print('\n - Termo da busca')
 print('Orientações para busca:\n'
-      '- Coloque o termo entre aspas duplas para espressões exatas;\n'
+      '- Coloque o termo entre aspas duplas para expressões exatas;\n'
       '- Não use acentos;\n'
       '- Não mais que três palavras\n')
 search_term = str(input('Digite o termo de busca: '))
