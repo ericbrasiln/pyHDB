@@ -43,5 +43,6 @@ markdown_extensions:
 nav:
     - Home: index.md
     - Sobre: about.md
+    - Agradecimentos: agradecimentos.md
     - Citação: citation.md
     - Licença: license.md 
