@@ -1,6 +1,6 @@
 ## Como citar?
 
-É possível clicar em `Cite this repository` na aba à direita da página inicial do repositório no GitHub para acessar a citação nos formatos APA e BibTex, ou ainda acessar o [arquivo da citação](https://github.com/ericbrasiln/pyHDB/blob/main/CITATION.cff) em formato .cff.
+É possível clicar em `Cite this repository` na aba à direita [da página inicial do repositório no GitHub](https://github.com/ericbrasiln/pyHDB/) para acessar a citação nos formatos APA e BibTex, ou ainda acessar o [arquivo da citação](https://github.com/ericbrasiln/pyHDB/blob/main/CITATION.cff) em formato .cff.
 
 Abaixo a citação no formato BibTex:
 
