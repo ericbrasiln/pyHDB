@@ -3,3 +3,6 @@ src/__pycache__/
 
 # documentation site build
 pyHDB-docs/site/
+
+# results and output
+HDB/

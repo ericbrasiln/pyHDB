@@ -117,10 +117,30 @@ time.sleep(1)
 #Muda para a janela dos resultados
 driver.switch_to.window(driver.window_handles[1])
 
-#Aguarda carregar a página
-print('\n- Aguardando os resultados serem carregados...')
-load_pag = WebDriverWait(driver, 360).until(EC.invisibility_of_element((By.ID, 'RadAjaxLoadingPanel1')))
-time.sleep(1)
+# Copia a url da janela de resultados a serem carregados
+url = driver.current_url
+# Cria uma variável com local e termo da busca no padrão a ser
+# usado na url de resultados caso ela não corregue corretamente
+code_search = 'pasta=ano%20'+period[:3]+'&pesq='+search_term
+
+# Se a página de resultados não carregar corretamente, 
+# e, portanto, terminar em 'Pesq=', alterar esse final para 
+# a variável 'code_search'
+if url[-5:] == 'Pesq=':
+    url = url[:-5] + code_search
+    # passa url para o driver
+    driver.get(url)
+    #refresh a página
+    driver.refresh()
+    #Aguarda carregar a página
+    print('\n- Aguardando os resultados serem carregados...')
+    time.sleep(10)
+# Se a página de resultado carregar normalmente:
+else:
+      #Aguarda carregar a página
+      print('\n- Aguardando os resultados serem carregados...')
+      load_pag = WebDriverWait(driver, 360).until(EC.invisibility_of_element((By.ID, 'RadAjaxLoadingPanel1')))
+      time.sleep(5)
 
 # Remove aspas e espaços do termo de busca
 search = search_term.replace('"','')
@@ -142,7 +162,11 @@ else:
       pass
 # Se a lista não possuir valores, resultados não foram encontrados e o programa se encerra.
 if len(l_bibs) == 0:
-      print('=-=-=-=-=-Fim da raspagem.=-=-=-=-=-')
+      print('=-=-=-=-=-Fim da raspagem.=-=-=-=-=-'\
+            '\n- Se esse resultado for incoerente com os resultados encontrados diretamente'\
+            'na página da HDB, tente novamente. Se o erro persistir, crie uma issue no repositório'\
+            'da ferramenta: https://github.com/ericbrasiln/pyHDB/issues')
+      driver.quit()
 else:
       # Chamar a função para criar o relatório geral da busca
       report_search(directory, search_term, date_time, l_bibs, place, period, journal, infos_dict)

@@ -24,8 +24,9 @@ Os resultados da pesquisa serão publicados em artigo científico avaliado por p
 
 Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso. 
 
-## Instalação :snake:
+## Instalação :wrench:
 
+### Python :snake:
 Essa ferramenta foi escrita em [Python 3.9](https://www.python.org/). Esta é uma linguagem de programação que te permite trabalhar rapidamente e integrar diferentes sistemas com maior eficiência.
 
 Para executar o arquivo `.py` é preciso instalar o Python3 em seu computador, assim como as bibliotecas utilizadas na ferramentas.
@@ -33,34 +34,74 @@ Para executar o arquivo `.py` é preciso instalar o Python3 em seu computador, a
 [Clique aqui](https://python.org.br/instalacao-windows/) para um tutorial de instalação do Python no Windows, [clique aqui](https://python.org.br/instalacao-linux/) para Linux e [clique aqui](https://python.org.br/instalacao-mac/)
 para Mac.
 
-***[clonar ou baixar o repositório]***
+Após a instalação, vc pode executar arquivos `.py` direto do prompt de comando do Windows ou pelo terminal do Linux, ou utilizar as diversas [IDE](https://pt.wikipedia.org/wiki/Ambiente_de_desenvolvimento_integrado) disponíveis. 
 
-Após a instalação, vc pode executar o arquivo .py direto do prompt de comando do Windows ou pelo terminal do Linux, ou utilizar as diversas [IDE](https://pt.wikipedia.org/wiki/Ambiente_de_desenvolvimento_integrado) disponíveis.
+Para saber mais sobre a instalação e configuração do Python em vários sistemas operacionais, veja a lição [Introdução e instalação do Python](https://programminghistorian.org/pt/licoes/introducao-instalacao-python) de William J. Turkel e Adam Crymble [^1].
 
-Exemplo de como executar utilizando o terminal do Linux, após instalar o Python3.8:
+Além do Python, seu computador precisa ter o pip instalado, um programa para instalar pacotes de software. Nas versões mais recentes do Python, o pip já vem instalado. Para saber mais, veja a lição [Instalação de Módulos Python com pip](https://programminghistorian.org/pt/licoes/instalacao-modulos-python-pip), de Fred Gibbs [^2].
 
-1. Acesse o diretório em que o arquivo .py está salvo:
-   ```{.sh .bash}
-   $ cd user/local
-   ```
-2. Instale as bibliotecas requeridas:
-   ```{.sh .bash}
-   $ pip3 install -r requirements.txt
-   ```
-3. Execute o arquivo usando Python3
-   ```{.sh .bash}
-   $ python3 pyHDB.py
-   ```
+[^1]: William J. Turkel e Adam Crymble, "Introdução e instalação do Python", traduzido por Josir C. Gomes, Programming Historian em português 1 (2021), [https://doi.org/10.46430/phpt0004](https://doi.org/10.46430/phpt0004).
 
-### Bibliotecas e módulos
+[^2]: Fred Gibbs, "Instalação de Módulos Python com pip", traduzido por Felipe Lamarca, Programming Historian em português 1 (2021), [https://doi.org/10.46430/phpt0018](https://doi.org/10.46430/phpt0018).
 
-- **urllib.requests**: módulo do Python que ajuda a acessar urls.
+#### Bibliotecas e módulos
+
+- **urllib.requests**: módulo do Python que lida com urls.
 [Saiba mais.](https://docs.python.org/pt-br/3/library/urllib.request.htmll)
 - **Selenium**: o [Selenium](https://www.selenium.dev/documentation/en/) é um conjunto de ferramentas para automatização de utilização de navegadores.
 - **webdriver.manager**: biblioteca que auxilia na instalação e configuração dos drivers de navegadores. [Saiba mais](https://pypi.org/project/webdriver-manager/)
 - **pandas**: [Pandas](https://pandas.pydata.org/) é uma biblioteca escrita em Python para manipulação e análise de dados.
 
+>**OBS 1**: A ferramenta foi desenvolvida e testada no sistema operacional Linux, em distribuição baseada no Ubuntu 20.10. Entretanto, ela foi projetada para funcionar em qualquer sistema operacional que suporte o Python 3.9. 
+
+>**OBS 2**: É necessário possuir o navegador *Chrome* instalado, pois este será utilizado pelo Selenium para acessar o site da HDB.
+
+### Download da ferramenta `pyHDB` :arrow_down:
+
+Para baixar a ferramenta para seu computador, existem duas formas. Para ambos os casos, é necessário acessar o repositório do GitHub [ericbrasiln/pyHDB](https://github.com/ericbrasiln/pyHDB/) e clicar no botão `Code`.
+
+![Botão `Code`](img/gh_1.png)
+
+#### Baixar o arquivo compactado `pyHDB.zip`
+
+Para baixar o arquivo `pyHDB.zip`, após clicar em `Code`, clique em `Download ZIP` e salve em seu computador.
+
+![Download ZIP](img/gh_2.png)
+
+Em seguida, descompacte o arquivo no local de sua preferência.
+
+#### Clonar o repositório com Git ou criar um fork no GitHub
+
+Para quem utiliza o sistema de controle de versões Git, basta clonar o repositório para seu computador, executando os comandos a partir da pasta em que deseja salvar o repositório.
+
+```{.sh .bash}
+git clone https://github.com/ericbrasiln/pyHDB.git
+```
+
+Quem utiliza o GitHub, pode também criar um *fork* do repositório.
+
+### Instalando requisitos
+
+Após baixar ou clonar o repositório para seu computador, acesse a pasta através do terminal ou powershell para visualizar os códigos que compõe a ferramenta:
+
+```{.sh .bash}
+cd <caminho para pasta>/pyHDB/src
+```
+
+É necessário instalar os requisitos ([módulos e bibliotecas](#bibliotecas-e-modulos)). Para isso, execute o comando abaixo:
+
+```{.sh .bash}
+$ pip3 install -r requirements.txt
+```
+Após a conclusão do processo, a ferramenta estará pronta para ser utilizada.
+
 ## Usos
+
+Para iniciar a ferramenta, é preciso executar o arquivo `pyHDB.py` usando Python3, a partir da pasta `pyHDB/src`.
+
+```{.sh .bash}
+$ python3 pyHDB.py
+```
 
 Ao executar o programa, o usuário verá as informações introdutórias da ferramentas, como na imagem abaixo:
 
@@ -86,7 +127,7 @@ Orientações para busca:
 Digite o período de busca: 
 ``` 
 
->**OBS**: Lembrando que os parâmetros `Local` e `Período` devem ser escritos de forma idêntica às opções listadas na [página da HDB](http://memoria.bn.br/hdb/). Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar `RJ`. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar `1910 - 1919`, pois as opções de período existentes na HDB estão organizadas por décadas.
+>**OBS 3**: Lembrando que os parâmetros `Local` e `Período` devem ser escritos de forma idêntica às opções listadas na [página da HDB](http://memoria.bn.br/hdb/). Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar `RJ`. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar `1910 - 1919`, pois as opções de período existentes na HDB estão organizadas por décadas.
 
 A busca será efetuada em todos os acervos existentes para essa configuração (`3 - Periódico: Todos`), após a inclusão do termo da busca.
 
@@ -109,9 +150,11 @@ A ferramenta `pyHDB` permite a busca por acervos específicos, ou lista de acerv
 
 O usuário deverá informar o número do acervo ou a lista de acervos que deseja pesquisar.
 
-Essa opção foi desenvolvida para sanar erros no processo de raspagem que podem acontecer principalmente em buscas com milhares de ocorrências. Se algum acervo não for raspado corretamente pela ferramenta principal `pyHDB`, o usuário poderá executar o arquivo `pyHDB_acervos.py` para raspagem de acervos específicos.
+Essa opção foi desenvolvida para sanar erros no processo de raspagem que podem acontecer principalmente em buscas com milhares de ocorrências. 
 
-Ao final do processo, a ferramenta criará arquivos `csv`e relatórios em `txt` no mesmo padrão da ferramenta principal `pyHDB`. Além disso, retornará automaticamente um `csv`final fundindo os dados recém coletados com os dados já existentes (desde que a busca seja executada na mesma data).
+Se algum acervo não for raspado corretamente pela ferramenta principal `pyHDB`, o usuário poderá executar o arquivo `pyHDB_acervos.py` para raspagem de acervos específicos.
+
+Ao final do processo, a ferramenta criará arquivos `csv` e relatórios em `txt` no mesmo padrão da ferramenta principal `pyHDB`. Além disso, retornará automaticamente um `csv` final mesclando os dados recém coletados com os dados já existentes (desde que a busca seja executada na mesma data).
 
 ## Resultados
 
@@ -168,3 +211,11 @@ HDB
 │   │   ├── RELATÓRIOS
 │   │   ├── ARQUIVOS_IMG
 ```
+
+## Relatar erros e sugestões
+
+Sendo a ferramenta `pyHDB` um scraper, um raspador de dados da internet, ela está profundamente ligada e dependente da estrutura e funcionamento do site da Hemeroteca Digital Brasileira da Biblioteca Nacional. Instabilidades no funcionamento do site da HDB afetam e prejudicam a raspagem de dados. Assim como, alterações na estrutura do site da HDB podem inviabilizar o funcionamento da ferramenta.
+
+Portanto, erros de execução, de resultados, entre outros podem acontecer a qualquer momento. Para que a ferramenta possa continuar funcionando corretamente, o usuário deverá relatar os erros e sugestões para a equipe de desenvolvimento da ferramenta.
+
+Sugerimos que o usuário crie [`issues` no GitHub da ferramenta `pyHDB`](https://github.com/ericbrasiln/pyHDB/issues) explicando da forma mais detalhada possível os problemas e qual sistema operacional está utilizando. 
