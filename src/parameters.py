@@ -16,9 +16,14 @@ def set_place(driver, local):
     local_arrow = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="UFCmb3_Arrow"]'))).click()
     in_local = driver.find_element(By.ID, 'UFCmb3_DropDown')
     time.sleep(2)
-    # Encontrar o parâmetro do local a ser pesquisado
-    estado = driver.find_element(By.XPATH, f"//*[text()='{local}']").click()
-    time.sleep(2)
+    try:
+        # Encontrar o parâmetro do local a ser pesquisado
+        estado = driver.find_element(By.XPATH, f"//*[text()='{local}']").click()
+        time.sleep(2)
+    except:
+        print('\033[3;91m Local não encontrado!\033[0m\n\
+        Verifique se o local foi digitado corretamente de acordo com a listagem no site da HDB \033[91m'+'<memoria.bn.br>'+ '\033[0m e tente novamente.')
+        exit()
 
 def set_time(driver, periodo):
     '''
@@ -30,8 +35,13 @@ def set_time(driver, periodo):
     time.sleep(3)
     periodo_Box = driver.find_element(By.ID, 'PeriodoCmb3_DropDown')
     # Encontrar o parâmetro do período a ser pesquisado
-    time_op = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodo}')]").click()
-    time.sleep(3)
+    try:
+        time_op = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodo}')]").click()
+        time.sleep(3)
+    except:
+        print('\033[3;91m Período não encontrado!\033[0m\n\
+        Verifique se o período foi digitado corretamente de acordo com a listagem no site da HDB \033[91m'+'<memoria.bn.br>'+ '\033[0m e tente novamente.')
+        exit()
 
 def set_journal(driver, periodico):
     '''
@@ -40,8 +50,8 @@ def set_journal(driver, periodico):
     # Encontrar e clicar na seta para abrir as opções de 'periódico'
     p_arrow = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodicoCmb3_Arrow"]'))).click()
     time.sleep(3)
-    # Encontrar o parâmetro do periódico a ser pesquisado
     periodico_box = driver.find_element(By.ID, 'PeriodicoCmb3_DropDown')
+    # Encontrar o parâmetro do periódico a ser pesquisado
     click_per = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodico}')]").click()
     time.sleep(2)
 
