@@ -9,6 +9,7 @@ email: ericbrasiln@protonmail.com
 '''
 # Importação de bibliotecas, módulos e funções
 from parameters import set_journal, set_place, set_search, set_time
+from validate_period import validate_period
 from bibs import get_bibs, bib_list
 from search_journals import journal_search
 from reports import*
@@ -31,7 +32,7 @@ date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 
 # Imprimir informações gerais sobre o programa
 print('=-'*50)
-print('\nFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\n'
+print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
     '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
     'informações nos servidores da instituição.\n'
@@ -46,6 +47,8 @@ print('\nFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digita
     'jornais com alguma ocorrência, até o limite de 100 jornais (segunda página de resultados).\n')
 print('=-'*50)
 
+# Opção para remover a impressão de logs na tela
+os.environ['WDM_LOG_LEVEL'] = '0'
 # Definição das opções do driver
 chrome_options = Options()  
 chrome_options.add_argument("--headless") 
@@ -58,33 +61,41 @@ driver.get(url)
 
 # Imprime informações sobre os parâmetros de busca
 print(
-      '\n-=-=-=-=-=-=- Definindo os parâmetros da busca -=-=-=-=-=-=-\n'
-      'Nessa versão do programa, a busca inicial é estabelecida pela opção local. É possível\n'
-      'incluir uma opção de recorte temporal em seguida. A busca será efetuada em todos os acervos\n'
-      'existentes para essa configuração.'
+      '\n\033[3;36m-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Definindo os parâmetros da busca -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\033[0m\n'
+      '\nNessa versão do programa, a busca inicial é estabelecida pela opção local.\n'
+      'É possível incluir uma opção de recorte temporal em seguida.\n'
+      'A busca será efetuada em todos os acervos existentes para essa configuração.'
       )
 print('=-'*50)
-print('\n1 - Local')
+print('\n\033[4;36m1 - Local\033[0m')
 print('Orientações para busca:\n'
       '- O termo deve ser idêntico às opções listadas na página da HDB;\n'
-      '- Esse parâmetro é "case sensitive";\n')
+      '- Não é possível buscar por "Todos";\n'
+      '- Esse parâmetro é "case sensitive".\n')
 place = str(input('Digite o local de busca: '))
-print('\n2 - Período')
+print('\n\033[4;36m2 - Período\033[0m')
 print('Orientações para busca:\n'
-      '- O recorte deve ser escrito de forma idêntica às opções listadas na página da HDB;\n'
-      '- É possível buscar todos os periódicos digitando `Todos`\n')
+      '- O recorte deve ser escrito de forma idêntica às opções listadas na página da HDB;\n\
+            Ex: \033[1;91m1910 - 1919\033[0m\n'
+      '- É possível buscar todos os periódicos digitando "Todos";\n\
+            Esse parâmetro é "case sensitive".\n')
 period = str(input('Digite o período de busca: '))
+#call the function
+test_period = validate_period(period)
+if test_period == False:
+    print('\033[1;31mO período informado não corresponde ao padrão da HDB.\n\
+      Por favor, verifique o período e tente novamente.\033[0m')
+    exit()
 #Nessa versão, a busca acontecerá em todos os periódicos existentes
 #de acordo com a definição de Local e Período.
-print('\n3 - Periódico: Todos')
+print('\n\033[4;36m3 - Periódico\033[0m: Todos')
 journal = 'Todos'
-print('\n4 - Termo da busca')
+print('\n\033[4;36m4 - Termo da busca\033[0m')
 print('Orientações para busca:\n'
       '- Coloque o termo entre aspas duplas para expressões exatas;\n'
       '- Não use acentos ou caracteres especiais;\n'
-      '- É recomendado não utilizar mais do que três palavras\n')
+      '- É recomendado não utilizar mais do que três palavras.\n')
 search_term = str(input('Digite o termo de busca: '))
-
 option = driver.find_element(By.XPATH, '//*[@id="RadTabStrip1"]/div')
 lis_options = option.find_elements(By.TAG_NAME, 'li')
 #Seleciona a opção inicial de buscar pelo Local e clica no botão de busca
@@ -92,7 +103,7 @@ lis_options = option.find_elements(By.TAG_NAME, 'li')
 lis_local = lis_options[2]
 lis_local.click()
 
-print(f'\n- Definindo parâmetros da busca...')
+print(f'\n\033[1;36m- Definindo parâmetros da busca...\033[0m')
 
 # Chama a função para encontrar e clicar na seta para abrir as opções de 'locais'
 set_place(driver, place)
@@ -133,12 +144,12 @@ if url[-5:] == 'Pesq=':
     #refresh a página
     driver.refresh()
     #Aguarda carregar a página
-    print('\n- Aguardando os resultados serem carregados...')
+    print('\n\033[5;91m- Aguardando os resultados serem carregados...\033[0m')
     time.sleep(10)
 # Se a página de resultado carregar normalmente:
 else:
       #Aguarda carregar a página
-      print('\n- Aguardando os resultados serem carregados...')
+      print('\n\033[1;91m- Aguardando os resultados serem carregados...\033[0m')
       load_pag = WebDriverWait(driver, 360).until(EC.invisibility_of_element((By.ID, 'RadAjaxLoadingPanel1')))
       time.sleep(5)
 
@@ -162,17 +173,17 @@ else:
       pass
 # Se a lista não possuir valores, resultados não foram encontrados e o programa se encerra.
 if len(l_bibs) == 0:
-      print('=-=-=-=-=-Fim da raspagem.=-=-=-=-=-'\
+      print('\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m'\
             '\n- Se esse resultado for incoerente com os resultados encontrados diretamente'\
             'na página da HDB, tente novamente. Se o erro persistir, crie uma issue no repositório'\
-            'da ferramenta: https://github.com/ericbrasiln/pyHDB/issues')
+            'da ferramenta: \033[4;36mhttps://github.com/ericbrasiln/pyHDB/issues \033[0m')
       driver.quit()
 else:
       # Chamar a função para criar o relatório geral da busca
       report_search(directory, search_term, date_time, l_bibs, place, period, journal, infos_dict)
       # Chamar função para realizar a busca e a raspagem em cada acervo
       journal_search(final_bibs, date, search_term, directory)
-      print('\n=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\n')
+      print('\n\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m\n')
 # Fechar todos os navegadores abertos 
 driver.quit()
     
