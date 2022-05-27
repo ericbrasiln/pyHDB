@@ -20,7 +20,7 @@ Membro fundador do GT Nacional Emancipações e Pós-­Abolição da Anpuh.
 
 ### Contato
 
-- email: [ericbrasiln@protonmail.com](mailto:ericbrasiln@protonmail.com)
+- email: [ericbrasiln@proton.me](mailto:ericbrasiln@proton.me)
 - site: [ericbrasiln.github.io](https://ericbrasiln.github.io)
 - Twitter: [@ericbrasiln](https://twitter.com/ericbrasiln)
 - GitHub: [ericbrasiln](https://github.com/ericbrasiln)

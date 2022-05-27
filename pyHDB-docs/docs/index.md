@@ -1,7 +1,7 @@
 ---
 title: Documentação
 author: Eric Brasil
-date: 2022-03-05
+date: 2022-05-27
 ---
 # Bem-vindo à documentação da pyHDB - Ferramenta heurística para a Hemeroteca Digital Brasileira
 
@@ -128,6 +128,8 @@ Digite o período de busca:
 ``` 
 
 >**OBS 3**: Lembrando que os parâmetros `Local` e `Período` devem ser escritos de forma idêntica às opções listadas na [página da HDB](http://memoria.bn.br/hdb/). Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar `RJ`. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar `1910 - 1919`, pois as opções de período existentes na HDB estão organizadas por décadas.
+
+>O programa executa validações de formatação de entrada, para que o usuário não digite dados inválidos. Ainda assim , é possível que erros de digitação e padronização dos parâmetros de busca gerem erros na execução da ferramenta. Portanto, é importante que o usuário tenha certeza de que os parâmetros de busca estão corretos.
 
 A busca será efetuada em todos os acervos existentes para essa configuração (`3 - Periódico: Todos`), após a inclusão do termo da busca.
 
