@@ -6,7 +6,7 @@ authors:
     orcid: https://orcid.org/0000-0001-5067-8475
 title: "pyHDB: Ferramenta heurística para a Hemeroteca Digital Brasileira"
 type: "software"
-version: 1.4
+version: 1.5
 doi: "https://doi.org/10.5281/zenodo.5696670"
 date-released: 2021-11-13
 url: "https://github.com/ericbrasiln/pyHDB"
