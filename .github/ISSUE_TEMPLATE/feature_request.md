@@ -1,5 +1,5 @@
 ---
-name: Feature request
+name: Solicitação de novo recurso ou funcionalidade
 about: Sugira uma ideia para este projeto
 title: "[ENHANCEMENT]"
 labels: enhancement
