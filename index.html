@@ -601,7 +601,8 @@ para Mac.</p>
 </ul>
 <blockquote>
 <p><strong>OBS 1</strong>: A ferramenta foi desenvolvida e testada no sistema operacional Linux, em distribuição baseada no Ubuntu 20.10. Entretanto, ela foi projetada para funcionar em qualquer sistema operacional que suporte o Python 3.9. </p>
-<p><strong>OBS 2</strong>: É necessário possuir o navegador <em>Chrome</em> instalado, pois este será utilizado pelo Selenium para acessar o site da HDB.</p>
+<p><strong>OBS 2</strong>: A ferramenta utiliza padrões ANSI para imprimir na tela alguns textos coloridos. Esse padrão é suportado nos terminais Linux e neles foram testados. Para usuários Windows é importante destacar que o suporte às <em>ANSI scape colors</em> existe no <em>PowerShell</em> a partir da versão 7.2, conforme essa <a href="https://stackoverflow.com/questions/70853849/powershell-formatting-issue-arm-template-whatif-ansi-escape-color/70855231#70855231">resposta no StackOverflow</a>. Portanto, para que os detalhes coloridos da ferramenta sejam impressos corretamente na tela, usuários de Windows devem utilizar PowerShell 7.2 ou mais recentes ou outros emuladores de terminal que suportem cores ANSI. Para mais informações ver a <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals?view=powershell-7.2">página oficial do PowerShell</a> e a <a href="https://en.wikipedia.org/wiki/Xterm">página da Wikipédia sobre xterm</a>, emulador de terminal para Windows.</p>
+<p><strong>OBS 3</strong>: É necessário possuir o navegador <em>Chrome</em> instalado, pois este será utilizado pelo Selenium para acessar o site da HDB.</p>
 </blockquote>
 <h3 id="download-da-ferramenta-pyhdb">Download da ferramenta <code>pyHDB</code> <img alt="⬇️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2b07.png" title=":arrow_down:" /></h3>
 <p>Para baixar a ferramenta para seu computador, existem duas formas. Para ambos os casos, é necessário acessar o repositório do GitHub <a href="https://github.com/ericbrasiln/pyHDB/">ericbrasiln/pyHDB</a> e clicar no botão <code>Code</code>.</p>
@@ -644,7 +645,7 @@ Orientações para busca:
 Digite o período de busca: 
 </code></pre></div>
 <blockquote>
-<p><strong>OBS 3</strong>: Lembrando que os parâmetros <code>Local</code> e <code>Período</code> devem ser escritos de forma idêntica às opções listadas na <a href="http://memoria.bn.br/hdb/">página da HDB</a>. Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar <code>RJ</code>. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar <code>1910 - 1919</code>, pois as opções de período existentes na HDB estão organizadas por décadas.</p>
+<p><strong>OBS 4</strong>: Lembrando que os parâmetros <code>Local</code> e <code>Período</code> devem ser escritos de forma idêntica às opções listadas na <a href="http://memoria.bn.br/hdb/">página da HDB</a>. Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar <code>RJ</code>. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar <code>1910 - 1919</code>, pois as opções de período existentes na HDB estão organizadas por décadas.</p>
 <p>O programa executa validações de formatação de entrada, para que o usuário não digite dados inválidos. Ainda assim , é possível que erros de digitação e padronização dos parâmetros de busca gerem erros na execução da ferramenta. Portanto, é importante que o usuário tenha certeza de que os parâmetros de busca estão corretos.</p>
 </blockquote>
 <p>A busca será efetuada em todos os acervos existentes para essa configuração (<code>3 - Periódico: Todos</code>), após a inclusão do termo da busca.</p>
@@ -737,7 +738,7 @@ Digite o termo de busca:
   <small>
     
       Ultima atualização:
-      2022-04-07
+      2022-08-26
     
   </small>
 </div>
