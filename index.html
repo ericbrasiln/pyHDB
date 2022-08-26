@@ -598,6 +598,7 @@ para Mac.</p>
 <li><strong>Selenium</strong>: o <a href="https://www.selenium.dev/documentation/en/">Selenium</a> é um conjunto de ferramentas para automatização de utilização de navegadores.</li>
 <li><strong>webdriver.manager</strong>: biblioteca que auxilia na instalação e configuração dos drivers de navegadores. <a href="https://pypi.org/project/webdriver-manager/">Saiba mais</a></li>
 <li><strong>pandas</strong>: <a href="https://pandas.pydata.org/">Pandas</a> é uma biblioteca escrita em Python para manipulação e análise de dados.</li>
+<li><strong>wget</strong>: <a href="https://www.gnu.org/software/wget/">Wget</a> é um programa de linha de comando para baixar arquivos de um servidor remoto.</li>
 </ul>
 <blockquote>
 <p><strong>OBS 1</strong>: A ferramenta foi desenvolvida e testada no sistema operacional Linux, em distribuição baseada no Ubuntu 20.10. Entretanto, ela foi projetada para funcionar em qualquer sistema operacional que suporte o Python 3.9. </p>
@@ -617,9 +618,10 @@ para Mac.</p>
 </code></pre></div>
 <p>Quem utiliza o GitHub, pode também criar um <em>fork</em> do repositório.</p>
 <h3 id="instalando-requisitos">Instalando requisitos</h3>
-<p>Após baixar ou clonar o repositório para seu computador, acesse a pasta através do terminal ou powershell para visualizar os códigos que compõe a ferramenta:</p>
+<p>Após baixar ou clonar o repositório para seu computador, acesse a pasta através do terminal ou PowerShell, caso seja usuário Windows.</p>
 <div class="bash highlight"><pre><span></span><code><span class="nb">cd</span> &lt;caminho para pasta&gt;/pyHDB/src
 </code></pre></div>
+<p>Para saber mais sobre os comandos básicos do PowerShell, veja a lição <a href="https://programminghistorian.org/en/lessons/intro-to-powershell">Introduction to the Windows Command Line with PowerShell</a>, de Ted Dawson no The Programming Historian <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. Para o Terminal para Linux e MacOS, veja a lição <a href="https://programminghistorian.org/en/lessons/intro-to-bash">Introduction to the Bash Command Line</a>, de Ian Milligan and James Baker no The Programming Historian <sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>.</p>
 <p>É necessário instalar os requisitos (<a href="#bibliotecas-e-modulos">módulos e bibliotecas</a>). Para isso, execute o comando abaixo:</p>
 <p><div class="bash highlight"><pre><span></span><code>$ pip3 install -r requirements.txt
 </code></pre></div>
@@ -652,8 +654,8 @@ Digite o período de busca:
 <div class="highlight"><pre><span></span><code>4 - Termo da busca
 Orientações para busca:
       - Coloque o termo entre aspas duplas para expressões exatas;
-      - Não use acentos;
-      - Não mais que três palavras
+      - Não use acentos ou caracteres especiais;
+      - É recomendado não utilizar mais do que três palavras.
 Digite o termo de busca:
 </code></pre></div>
 <p>Portanto, a busca foi elaborada a partir das demandas de pesquisa e interesses pessoais e serão explicadas detalhadamente em artigo. </p>
@@ -719,7 +721,7 @@ Digite o termo de busca:
 </code></pre></div>
 <h2 id="relatar-erros-e-sugestoes">Relatar erros e sugestões</h2>
 <p>Sendo a ferramenta <code>pyHDB</code> um scraper, um raspador de dados da internet, ela está profundamente ligada e dependente da estrutura e funcionamento do site da Hemeroteca Digital Brasileira da Biblioteca Nacional. Instabilidades no funcionamento do site da HDB afetam e prejudicam a raspagem de dados. Assim como, alterações na estrutura do site da HDB podem inviabilizar o funcionamento da ferramenta.</p>
-<p>Portanto, erros de execução, de resultados, entre outros podem acontecer a qualquer momento. Para que a ferramenta possa continuar funcionando corretamente, o usuário deverá relatar os erros e sugestões para a equipe de desenvolvimento da ferramenta.</p>
+<p>Portanto, erros de execução, de resultados, entre outros podem acontecer a qualquer momento. Para que a ferramenta possa continuar funcionando corretamente, o usuário deverá relatar os erros e enviar sugestões para a equipe de desenvolvimento da ferramenta.</p>
 <p>Sugerimos que o usuário crie <a href="https://github.com/ericbrasiln/pyHDB/issues"><code>issues</code> no GitHub da ferramenta <code>pyHDB</code></a> explicando da forma mais detalhada possível os problemas e qual sistema operacional está utilizando. </p>
 <div class="footnote">
 <hr />
@@ -729,6 +731,12 @@ Digite o termo de busca:
 </li>
 <li id="fn:2">
 <p>Fred Gibbs, "Instalação de Módulos Python com pip", traduzido por Felipe Lamarca, Programming Historian em português 1 (2021), <a href="https://doi.org/10.46430/phpt0018">https://doi.org/10.46430/phpt0018</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Ted Dawson, "Introduction to the Windows Command Line with PowerShell," Programming Historian 5 (2016), https://doi.org/10.46430/phen0054.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Ian Milligan and James Baker, "Introduction to the Bash Command Line," Programming Historian 3 (2014), https://doi.org/10.46430/phen0037.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
