@@ -25,7 +25,7 @@ final_list = []
 
 # Imprimir informações gerais sobre o programa
 print('=-'*50)
-print('\nEsse script é parta da pyHDB, Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\n'
+print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
     '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
     'informações nos servidores da instituição.\n'
@@ -40,6 +40,9 @@ print('\nEsse script é parta da pyHDB, Ferramenta de auxílio metodológico par
     'erros no processo de raspagem que podem acontecer, principalmente em buscas com milhares de ocorrências.')
 print('=-'*50)
 
+# Opção para remover a impressão de logs na tela
+os.environ['WDM_LOG_LEVEL'] = '0'
+
 # Definição da lista de acervos
 bibs_list= list()
 while True:
@@ -48,11 +51,11 @@ while True:
     if answer in 'Nn':
         print('-=-'*50)
         break
-print('\n - Termo da busca')
+print('\n\033[4;36m- Termo da busca\033[0m')
 print('Orientações para busca:\n'
       '- Coloque o termo entre aspas duplas para expressões exatas;\n'
-      '- Não use acentos;\n'
-      '- Não mais que três palavras\n')
+      '- Não use acentos ou caracteres especiais;\n'
+      '- É recomendado não utilizar mais do que três palavras.\n')
 search_term = str(input('Digite o termo de busca: '))
 
 # Adequar o termo da busca para ser usado na url
@@ -65,7 +68,7 @@ directory = os.path.join('HDB', final_search)
 if not os.path.exists(directory):
     os.makedirs(directory)  
 else:
-    print('pasta já existe.')
+    print('Pasta do termo de busca já existe.')
 # Iterar na lista de acervos
 for final_bib in bibs_list:
     url = "http://memoria.bn.br/docreader/docreader.aspx?bib=" + final_bib + "&Pesq=" + search
