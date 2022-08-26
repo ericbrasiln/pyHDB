@@ -55,7 +55,9 @@ Além do Python, seu computador precisa ter o pip instalado, um programa para in
 
 >**OBS 1**: A ferramenta foi desenvolvida e testada no sistema operacional Linux, em distribuição baseada no Ubuntu 20.10. Entretanto, ela foi projetada para funcionar em qualquer sistema operacional que suporte o Python 3.9. 
 
->**OBS 2**: É necessário possuir o navegador *Chrome* instalado, pois este será utilizado pelo Selenium para acessar o site da HDB.
+> **OBS 2**: A ferramenta utiliza padrões ANSI para imprimir na tela alguns textos coloridos. Esse padrão é suportado nos terminais Linux e neles foram testados. Para usuários Windows é importante destacar que o suporte às *ANSI scape colors* existe no *PowerShell* a partir da versão 7.2, conforme essa [resposta no StackOverflow](https://stackoverflow.com/questions/70853849/powershell-formatting-issue-arm-template-whatif-ansi-escape-color/70855231#70855231). Portanto, para que os detalhes coloridos da ferramenta sejam impressos corretamente na tela, usuários de Windows devem utilizar PowerShell 7.2 ou mais recentes ou outros emuladores de terminal que suportem cores ANSI. Para mais informações ver a [página oficial do PowerShell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals?view=powershell-7.2) e a [página da Wikipédia sobre xterm](https://en.wikipedia.org/wiki/Xterm), emulador de terminal para Windows.
+
+>**OBS 3**: É necessário possuir o navegador *Chrome* instalado, pois este será utilizado pelo Selenium para acessar o site da HDB.
 
 ### Download da ferramenta `pyHDB` 
 
@@ -128,7 +130,7 @@ Orientações para busca:
 Digite o período de busca: 
 ``` 
 
->**OBS 3**: Lembrando que os parâmetros `Local` e `Período` devem ser escritos de forma idêntica às opções listadas na [página da HDB](http://memoria.bn.br/hdb/). Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar `RJ`. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar `1910 - 1919`, pois as opções de período existentes na HDB estão organizadas por décadas.
+>**OBS 4**: Lembrando que os parâmetros `Local` e `Período` devem ser escritos de forma idêntica às opções listadas na [página da HDB](http://memoria.bn.br/hdb/). Por Exemplo, se o usuários deseja buscar os periódicos existentes no Rio de Janeiro, deve colocar `RJ`. Se o usuário deseja buscar os periódicos existentes no Rio de Janeiro na década de 1910, deve colocar `1910 - 1919`, pois as opções de período existentes na HDB estão organizadas por décadas.
 
 A busca será efetuada em todos os acervos existentes para essa configuração (`3 - Periódico: Todos`), após a inclusão do termo da busca.
 
