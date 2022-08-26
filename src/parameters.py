@@ -47,12 +47,12 @@ def set_journal(driver, periodico):
     '''
     Função para encontrar o parâmetro periódico
     '''
-    # Encontrar e clicar na seta para abrir as opções de 'periódico'
-    p_arrow = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodicoCmb3_Arrow"]'))).click()
+    # Encontrar e clicar na seta para abrir as opções de 'periódico' 
+    p_arrow = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodicoCmb3"]/span/button')))
     time.sleep(3)
     periodico_box = driver.find_element(By.ID, 'PeriodicoCmb3_DropDown')
     # Encontrar o parâmetro do periódico a ser pesquisado
-    click_per = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodico}')]").click()
+    click_per = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodico}')]")
     time.sleep(2)
 
 def set_search(driver, search_term):
