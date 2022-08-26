@@ -1,7 +1,7 @@
 ---
 title: Documentação
 author: Eric Brasil
-date: 2022-03-05
+date: 2022-08-26
 ---
 # Bem-vindo à documentação da pyHDB - Ferramenta heurística para a Hemeroteca Digital Brasileira
 
