@@ -29,39 +29,55 @@ def set_time(driver, periodo):
     '''
     Função para encontrar o parâmetro período
     '''
-    # Encontrar e clicar no box para abrir as opções de 'período'
-    time_box = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodoCmb3_Input"]')))
-    time_box.click()
-    time.sleep(3)
-    periodo_Box = driver.find_element(By.ID, 'PeriodoCmb3_DropDown')
-    # Encontrar o parâmetro do período a ser pesquisado
     try:
-        time_op = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodo}')]").click()
+        # Encontrar e clicar no box para abrir as opções de 'período'
+        time_box = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodoCmb3_Input"]')))
+        time_box.click()
         time.sleep(3)
+        periodo_Box = driver.find_element(By.ID, 'PeriodoCmb3_DropDown')
+        # Encontrar o parâmetro do período a ser pesquisado
+        try:
+            time_op = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodo}')]").click()
+            time.sleep(3)
+        except:
+            print('\033[3;91m Período não encontrado!\033[0m\n\
+            Verifique se o período foi digitado corretamente de acordo com a listagem no site da HDB \033[91m'+'<memoria.bn.br>'+ '\033[0m e tente novamente.')
+            exit()
     except:
-        print('\033[3;91m Período não encontrado!\033[0m\n\
-        Verifique se o período foi digitado corretamente de acordo com a listagem no site da HDB \033[91m'+'<memoria.bn.br>'+ '\033[0m e tente novamente.')
+        print(f'\033[3;91m Erro ao definir o parâmetro período com o valor {periodo}.\033[0m\n\
+        Esse erro é ocasionado por problemas de carregamento no site da própria HDB.\n\
+        Execute o programa novamente. Se o erro persistir, crie uma issue no repositório da pyHDB: \033[91m'+'https://github.com/ericbrasiln/pyHDB/issues'+'\033[0m')
         exit()
-
 def set_journal(driver, periodico):
     '''
     Função para encontrar o parâmetro periódico
     '''
-    # Encontrar e clicar na seta para abrir as opções de 'periódico' 
-    p_arrow = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodicoCmb3"]/span/button')))
-    time.sleep(3)
-    periodico_box = driver.find_element(By.ID, 'PeriodicoCmb3_DropDown')
-    # Encontrar o parâmetro do periódico a ser pesquisado
-    click_per = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodico}')]")
-    time.sleep(2)
+    try:
+        # Encontrar e clicar na seta para abrir as opções de 'periódico' 
+        p_arrow = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PeriodicoCmb3"]/span/button')))
+        time.sleep(3)
+        periodico_box = driver.find_element(By.ID, 'PeriodicoCmb3_DropDown')
+        # Encontrar o parâmetro do periódico a ser pesquisado
+        click_per = driver.find_element(By.XPATH, f"//*[contains(text(), '{periodico}')]")
+        time.sleep(2)
+    except:
+        print('\033[3;91m Erro ao definir o parâmetro periódico com o valor "Todos".\033[0m\n\
+        Esse erro é ocasionado por problemas de carregamento no site da própria HDB.\n\
+        Execute o programa novamente. Se o erro persistir, crie uma issue no repositório da pyHDB: \033[91m'+'https://github.com/ericbrasiln/pyHDB/issues'+ '\033[0m')
+        exit()
 
 def set_search(driver, search_term):
     '''
     Função para inserir o termo de busca
     '''
     # Enviar os dados para a caixa de busca'
-    search_box =  driver.find_element(By.XPATH, '//*[@id="PesquisaTxt3"]')
-    search_box.click()
-    search_box.send_keys(search_term)
-    time.sleep(2)
-    
+    try:
+        search_box = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="PesquisaTxt3"]')))
+        search_box.click()
+        search_box.send_keys(search_term)
+        time.sleep(2)
+    except:
+        print(f'\033[3;91m Erro ao definir o parâmetro de busca com o valor {search_term}.\033[0m\n\
+        Esse erro é ocasionado por problemas de carregamento no site da própria HDB.\n\
+        Execute o programa novamente. Se o erro persistir, crie uma issue no repositório da pyHDB: \033[91m'+'https://github.com/ericbrasiln/pyHDB/issues'+ '\033[0m')
+        exit()

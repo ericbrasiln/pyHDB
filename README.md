@@ -52,6 +52,7 @@ Além do Python, seu computador precisa ter o pip instalado, um programa para in
 - **Selenium**: o [Selenium](https://www.selenium.dev/documentation/en/) é um conjunto de ferramentas para automatização de utilização de navegadores.
 - **webdriver.manager**: biblioteca que auxilia na instalação e configuração dos drivers de navegadores. [Saiba mais](https://pypi.org/project/webdriver-manager/)
 - **pandas**: [Pandas](https://pandas.pydata.org/) é uma biblioteca escrita em Python para manipulação e análise de dados.
+- **wget**: [Wget](https://www.gnu.org/software/wget/) é um programa de linha de comando para baixar arquivos de um servidor remoto.
 
 >**OBS 1**: A ferramenta foi desenvolvida e testada no sistema operacional Linux, em distribuição baseada no Ubuntu 20.10. Entretanto, ela foi projetada para funcionar em qualquer sistema operacional que suporte o Python 3.9. 
 
@@ -85,11 +86,17 @@ Quem utiliza o GitHub, pode também criar um *fork* do repositório.
 
 ### Instalando requisitos
 
-Após baixar ou clonar o repositório para seu computador, acesse a pasta através do terminal ou powershell para visualizar os códigos que compõe a ferramenta:
+Após baixar ou clonar o repositório para seu computador, acesse a pasta através do terminal ou PowerShell, caso seja usuário Windows.
 
 ```{.sh .bash}
 cd <caminho para pasta>/pyHDB/src
 ```
+
+Para saber mais sobre os comandos básicos do PowerShell, veja a lição [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell), de Ted Dawson no The Programming Historian [^3]. Para o Terminal para Linux e MacOS, veja a lição [Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash), de Ian Milligan and James Baker no The Programming Historian [^4].
+
+[^3]: Ted Dawson, "Introduction to the Windows Command Line with PowerShell," Programming Historian 5 (2016), https://doi.org/10.46430/phen0054.
+
+[^4]: Ian Milligan and James Baker, "Introduction to the Bash Command Line," Programming Historian 3 (2014), https://doi.org/10.46430/phen0037.
 
 É necessário instalar os requisitos ([módulos e bibliotecas](#bibliotecas-e-modulos)). Para isso, execute o comando abaixo:
 
@@ -100,7 +107,7 @@ Após a conclusão do processo, a ferramenta estará pronta para ser utilizada.
 
 ## Usos
 
-Para iniciar a ferramenta, é preciso executar o arquivo `pyHDB.py` usando Python3, a partir da pasta `pyHDB/src`.
+Para iniciar a ferramenta, é preciso executar o arquivo `pyHDB.py` usando Python3, a partir da pasta `pyHDB/src`. Para isso, execute o comando abaixo, no terminal ou PowerShell, estando na pasta `pyHDB/src`.
 
 ```{.sh .bash}
 $ python3 pyHDB.py
@@ -138,8 +145,8 @@ A busca será efetuada em todos os acervos existentes para essa configuração (
 4 - Termo da busca
 Orientações para busca:
       - Coloque o termo entre aspas duplas para expressões exatas;
-      - Não use acentos;
-      - Não mais que três palavras
+      - Não use acentos ou caracteres especiais;
+      - É recomendado não utilizar mais do que três palavras.
 Digite o termo de busca:
 ```
 
@@ -219,7 +226,7 @@ HDB
 
 Sendo a ferramenta `pyHDB` um scraper, um raspador de dados da internet, ela está profundamente ligada e dependente da estrutura e funcionamento do site da Hemeroteca Digital Brasileira da Biblioteca Nacional. Instabilidades no funcionamento do site da HDB afetam e prejudicam a raspagem de dados. Assim como, alterações na estrutura do site da HDB podem inviabilizar o funcionamento da ferramenta.
 
-Portanto, erros de execução, de resultados, entre outros podem acontecer a qualquer momento. Para que a ferramenta possa continuar funcionando corretamente, o usuário deverá relatar os erros e sugestões para a equipe de desenvolvimento da ferramenta.
+Portanto, erros de execução, de resultados, entre outros podem acontecer a qualquer momento. Para que a ferramenta possa continuar funcionando corretamente, o usuário deverá relatar os erros e enviar sugestões para a equipe de desenvolvimento da ferramenta.
 
 Sugerimos que o usuário crie [`issues` no GitHub da ferramenta `pyHDB`](https://github.com/ericbrasiln/pyHDB/issues) explicando da forma mais detalhada possível os problemas e qual sistema operacional está utilizando. 
 
