@@ -43,7 +43,7 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
     acervo_list = []
     try:
         # Buscar aviso de que o jornal possui direitos específicos de uso
-        warning = driver.find_element_by_id('RadWindowWrapper_PesqOpniaoRadWindow')
+        warning = driver.find_element(By.ID, "RadWindowWrapper_PesqOpniaoRadWindow")
         print('- Aviso:\nEste material é detentor do direito autoral, patrimonial '
             'e moral, com base nos incisos do art. 7º da Lei n. 9.279 de 1996 (LPI)'
             'e artigo 5°, inciso XXIX, da Constituição de 1988.\n'
