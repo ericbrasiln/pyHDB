@@ -20,7 +20,9 @@ Tem como objetivo auxiliar pesquisadores e pesquisadoras no processo de document
 
 Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab e do [LABHDUFBA](http://www.labhd.ufba.br).
 
-Os resultados da pesquisa serão publicados em artigo científico avaliado por pares na [Revista História da Historiografia](https://www.historiadahistoriografia.com.br/) em 2022 e seu código e documentação serão disponibilizados publicamente, com [licença MIT](LICENSE).
+Os resultados da pesquisa estão publicados em artigo científico avaliado por pares na [Revista História da Historiografia](https://www.historiadahistoriografia.com.br/) e pode ser [acessado aqui](https://www.historiadahistoriografia.com.br/revista/article/view/1904)[^1] e seu código e documentação estão disponíveis publicamente, com [licença MIT](https://ericbrasiln.github.io/pyHDB/license/).
+
+[^1]: BRASIL, Eric. pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira: utilizando técnicas de web scraping para a pesquisa em História. _História da Historiografia: International Journal of Theory and History of Historiography_, Ouro Preto, v. 15, n. 40, p. 186–217, 2022. DOI: 10.15848/hh.v15i40.1904.
 
 Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso. 
 
@@ -36,13 +38,13 @@ para Mac.
 
 Após a instalação, vc pode executar arquivos `.py` direto do prompt de comando do Windows ou pelo terminal do Linux, ou utilizar as diversas [IDE](https://pt.wikipedia.org/wiki/Ambiente_de_desenvolvimento_integrado) disponíveis. 
 
-Para saber mais sobre a instalação e configuração do Python em vários sistemas operacionais, veja a lição [Introdução e instalação do Python](https://programminghistorian.org/pt/licoes/introducao-instalacao-python) de William J. Turkel e Adam Crymble [^1].
+Para saber mais sobre a instalação e configuração do Python em vários sistemas operacionais, veja a lição [Introdução e instalação do Python](https://programminghistorian.org/pt/licoes/introducao-instalacao-python) de William J. Turkel e Adam Crymble [^2].
 
-Além do Python, seu computador precisa ter o pip instalado, um programa para instalar pacotes de software. Nas versões mais recentes do Python, o pip já vem instalado. Para saber mais, veja a lição [Instalação de Módulos Python com pip](https://programminghistorian.org/pt/licoes/instalacao-modulos-python-pip), de Fred Gibbs [^2].
+Além do Python, seu computador precisa ter o pip instalado, um programa para instalar pacotes de software. Nas versões mais recentes do Python, o pip já vem instalado. Para saber mais, veja a lição [Instalação de Módulos Python com pip](https://programminghistorian.org/pt/licoes/instalacao-modulos-python-pip), de Fred Gibbs [^3].
 
-[^1]: William J. Turkel e Adam Crymble, "Introdução e instalação do Python", traduzido por Josir C. Gomes, Programming Historian em português 1 (2021), [https://doi.org/10.46430/phpt0004](https://doi.org/10.46430/phpt0004).
+[^2]: William J. Turkel e Adam Crymble, "Introdução e instalação do Python", traduzido por Josir C. Gomes, Programming Historian em português 1 (2021), [https://doi.org/10.46430/phpt0004](https://doi.org/10.46430/phpt0004).
 
-[^2]: Fred Gibbs, "Instalação de Módulos Python com pip", traduzido por Felipe Lamarca, Programming Historian em português 1 (2021), [https://doi.org/10.46430/phpt0018](https://doi.org/10.46430/phpt0018).
+[^3]: Fred Gibbs, "Instalação de Módulos Python com pip", traduzido por Felipe Lamarca, Programming Historian em português 1 (2021), [https://doi.org/10.46430/phpt0018](https://doi.org/10.46430/phpt0018).
 
 #### Bibliotecas e módulos
 
@@ -91,11 +93,11 @@ Após baixar ou clonar o repositório para seu computador, acesse a pasta atrav�
 cd <caminho para pasta>/pyHDB/src
 ```
 
-Para saber mais sobre os comandos básicos do PowerShell, veja a lição [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell), de Ted Dawson no The Programming Historian [^3]. Para o Terminal para Linux e MacOS, veja a lição [Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash), de Ian Milligan and James Baker no The Programming Historian [^4].
+Para saber mais sobre os comandos básicos do PowerShell, veja a lição [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell), de Ted Dawson no The Programming Historian [^4]. Para o Terminal para Linux e MacOS, veja a lição [Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash), de Ian Milligan and James Baker no The Programming Historian [^5].
 
-[^3]: Ted Dawson, "Introduction to the Windows Command Line with PowerShell," Programming Historian 5 (2016), https://doi.org/10.46430/phen0054.
+[^4]: Ted Dawson, "Introduction to the Windows Command Line with PowerShell," Programming Historian 5 (2016), https://doi.org/10.46430/phen0054.
 
-[^4]: Ian Milligan and James Baker, "Introduction to the Bash Command Line," Programming Historian 3 (2014), https://doi.org/10.46430/phen0037.
+[^5]: Ian Milligan and James Baker, "Introduction to the Bash Command Line," Programming Historian 3 (2014), https://doi.org/10.46430/phen0037.
 
 É necessário instalar os requisitos ([módulos e bibliotecas](#bibliotecas-e-modulos)). Para isso, execute o comando abaixo:
 
@@ -128,7 +130,6 @@ Digite o local de busca:
 É possível incluir uma opção de recorte temporal em seguida. 
 
 ```
-
 2 - Período
 Orientações para busca:
       - O recorte deve ser escrito de forma idêntica às opções listadas na página da HDB;
@@ -205,10 +206,12 @@ O programa retorna os seguintes resultados:
         ```
         O título do arquivo tem o seguinte padrão: `ERRO_{número do acervo}_{data e hora da busca}.txt`
    - INFORMAÇÕES GERAIS: registra dados gerais relativo ao quantitativo de acervos e páginas pesquisadas na busca e a quantidade de ocorrências, assim como a frequência de ocorrências por página.
+        ```
         - Acervo
         - Total de Páginas
         - Total de Ocorrências
         - Frequência de ocorrências X páginas. 
+        ```
         O título do arquivo tem o seguinte padrão: `{infos_acervos}_{período}_{page01 ou 02}.csv`
 4. `ARQUIVOS_IMG`: Cria um diretório `HDB/{termo da busca}/{data da busca}/ARQUIVOS_IMG`e salva as imagens das páginas com ocorrências. O nome do arquivo é a combinação no número do acervo com o número geral da página. Ex: `168319_02_12603.jpg`
 

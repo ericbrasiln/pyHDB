@@ -4,13 +4,17 @@
 
 Ferramenta desenvolvida sem fins lucrativos nem pretensão de acessar dados sigilosos ou alterar informações nos servidores da instituição.
 
-Os resultados da pesquisa serão publicados em artigo científico avaliado por pares na [Revista História da Historiografia](https://www.historiadahistoriografia.com.br/) em 2022.
+Os resultados da pesquisa estão publicados em artigo científico avaliado por pares na [Revista História da Historiografia](https://www.historiadahistoriografia.com.br/) e pode ser [acessado aqui](https://www.historiadahistoriografia.com.br/revista/article/view/1904):
+
+>BRASIL, Eric. pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira: utilizando técnicas de web scraping para a pesquisa em História. _História da Historiografia: International Journal of Theory and History of Historiography_, Ouro Preto, v. 15, n. 40, p. 186–217, 2022. DOI: 10.15848/hh.v15i40.1904.
 
 ## O autor
 
 Eric Brasil é professor do curso de licenciatura em História e do Bacharelado Interdisciplinar em Humanidades no Instituto de Humanidades e Letras da Universidade da Integração Internacional da Lusofonia Afro-brasileira (IHLM/UNILAB), campus dos Malês.
 
 Doutor (2016) e Mestre (2011) pelo Programa de Pós­-Graduação em História Social da Universidade Federal Fluminense.
+
+Investigador Visitante no [Laboratório de Humanidades Digitais da FCSH-NOVA](https://dhlab.fcsh.unl.pt/), Lisboa.
 
 Editor do [Programming Historian em português](https://programminghistorian.org/pt).
 
