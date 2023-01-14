@@ -10,7 +10,7 @@ Abaixo a citação no formato BibTex:
   doi = {10.5281/zenodo.5696671}
   title = {pyHDB - Ferramenta heurística para a Hemeroteca Digital Brasileira},
   url = {https://github.com/ericbrasiln/pyHDB}
-  version = {1.7.1}
+  version = {1.6.1}
   year = {2021},
   note = {Online; accessed 14 Jan 2023}
 }
