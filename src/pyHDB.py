@@ -162,7 +162,7 @@ final_search = os.path.join(search, date)
 directory = os.path.join('HDB', final_search)
 
 # Chamar a função para encontrar as numerações das bibliotecas de cada jornal e verifica se há ocorrências
-l_bibs = get_bibs(driver, search, directory, period)
+l_bibs = get_bibs(driver, directory, place, period)
 # Função para tratar a lista de acervos
 final_bibs = bib_list(l_bibs)
 print(f'\n- Encontradas {len(final_bibs)} bibliotecas com ocorrências.')
