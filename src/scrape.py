@@ -48,7 +48,7 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
             'e moral, com base nos incisos do art. 7º da Lei n. 9.279 de 1996 (LPI)'
             'e artigo 5°, inciso XXIX, da Constituição de 1988.\n'
             'Uso indevido está sujeito a indenizações. Para reproduzi-lo entre em contato com\n'
-            'cpdoc@jb.com.br\n'
+            'a FBN.\n'
             '- Fechando "Aviso"...\n')
         # Clicar para fechar o aviso
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
