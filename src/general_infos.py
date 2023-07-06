@@ -33,7 +33,7 @@ def get_infos(driver):
     infos['Total de páginas analisadas'] = total_pages
     infos['Total de Acervos analisados'] = total_acervos
     infos['Total de ocorrências encontradas'] = total_occur
-    infos['Frequência de Ocorrências por Página'] = freq_occur
+    infos['Número de páginas para uma ocorrência'] = freq_occur
     return infos 
 
 def get_infos_acervos(driver, directory, place, period, page):
@@ -68,5 +68,5 @@ def get_infos_acervos(driver, directory, place, period, page):
     period = period.replace(' ', '')
     csv_name = os.path.join(csv_path, f'infos_acervos_{place}_{period}_{page}.csv')
     # Criar arquivo CSV usando pandas
-    df = pd.DataFrame(infos_acervos_final, columns=['Acervo', 'Total de Páginas', 'Total de Ocorrências', 'Frequência de ocorrências X páginas'])
+    df = pd.DataFrame(infos_acervos_final, columns=['Acervo', 'Total de Páginas', 'Total de Ocorrências', 'Número de Páginas para uma Ocorrência'])
     df.to_csv(csv_name, index=False)
