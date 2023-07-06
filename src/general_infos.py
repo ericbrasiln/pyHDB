@@ -15,7 +15,7 @@ def get_infos(driver):
     '''
     # Criar dicionário para armazenar as informações
     infos = {}
-    # Usar BeautifulSoup para pegar o conteúo
+    # Usar BeautifulSoup para pegar o conteúdo
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     totals_div = soup.find('div', id='totaisdiv')
     div_pages = totals_div.find('div', id='paginastotdiv')

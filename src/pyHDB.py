@@ -39,8 +39,8 @@ print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico p
     '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as '\
     'etapas \nde sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
     '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab \ne do LABHDUFBA.\n'
-    '\n- Os resultados da pesquisa serão publicados em artigo científico avaliado por pares e seu código \ne '\
-    'dataset serão disponibilizados publicamente, com licença MIT.\n'
+    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu código \ne '\
+    'dataset estão disponibilizados publicamente, com licença MIT.\n'
     '\n- Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso.\n'
     '\n- A busca foi elaborada a partir das demandas de pesquisa pessoais e serão explicadas no artigo.\n'
     '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos \n'\
@@ -132,7 +132,7 @@ driver.switch_to.window(driver.window_handles[1])
 # Copia a url da janela de resultados a serem carregados
 url = driver.current_url
 # Cria uma variável com local e termo da busca no padrão a ser
-# usado na url de resultados caso ela não corregue corretamente
+# usado na url de resultados caso ela não carregue corretamente
 code_search = 'pasta=ano%20'+period[:3]+'&pesq='+search_term
 
 # Se a página de resultados não carregar corretamente, 

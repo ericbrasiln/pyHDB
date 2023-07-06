@@ -32,7 +32,7 @@ def df_final(csvs_path, search):
     '''
     #Acessa o diretório onde os arquivos CSV foram salvos
     os.chdir(csvs_path)
-    #Lista de arquivos CSV exixtentes
+    #Lista de arquivos CSV existentes
     csvs_list = []
     #Lista com os nomes dos arquivos .csv
     csv_names = []

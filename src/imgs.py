@@ -55,7 +55,7 @@ def get_img(driver, bib_final, pag, diretorio):
             time.sleep(1)
             try:
                 trying += 1
-                # Caputrando os Cookies do Selenium para fazer o download das imagens
+                # Capturando os Cookies do Selenium para fazer o download das imagens
                 cookies = (driver.get_cookies())
                 for cook in cookies:
                     if (cook['name'] == 'ARRAffinity'):

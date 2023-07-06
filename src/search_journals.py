@@ -16,7 +16,7 @@ def journal_search(list_of_bibs, date, search_term, directory):
     # Lista com numeração dos jornais a serem pesquisados
     search = search_term.replace(' ','%20')
     search = search.replace('"','\"')
-    # Iterção na lista de acervos
+    # Iteração na lista de acervos
     for journal in list_of_bibs:
         # if csv of acervo exists pass
         search_term = search_term.replace('"','')
