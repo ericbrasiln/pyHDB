@@ -62,6 +62,17 @@ def report_journal(directory, pasta, bib_final, date_time, search, tot, url):
     '''
     Função para criar relatório específico de acervo
     '''
+    # Limpar nome da pasta
+    pasta = pasta.replace(' ', '_')
+    pasta = pasta.replace('-', '')
+    # criar lista com caracteres especiais a serem removidos
+    chars = ['/', '\\', ':', '*', '?', '"', '<', '>', '|', '(', ')']
+    # Remover caracteres especiais do nome da pasta
+    for char in chars:
+        if char in pasta:
+            pasta = pasta.replace(char, '')
+    # substituir '__' por '_'
+    pasta = pasta.replace('__', '_')
     # Chamar função para criar caminho do relatório
     out_report = report_path(directory, f'relatório_{pasta}')
     if not os.path.exists(out_report):
@@ -72,7 +83,7 @@ def report_journal(directory, pasta, bib_final, date_time, search, tot, url):
             f'=-=-=-=-=-Relatório de acervo da Raspagem da HDB-=-=-=-=-=\n'
             f'- Data e hora da busca: {date_time}\n'
             f'- Termo da busca: {search};\n'
-            f' - Acervo: {pasta};\n'
+            f'- Acervo: {pasta};\n'
             f'- Total de ocorrências: {tot};\n'
             f'- Link da lista de resultados: {url}'
             )

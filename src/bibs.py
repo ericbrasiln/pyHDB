@@ -7,7 +7,7 @@ import re, time
 from general_infos import get_infos_acervos
 from selenium.webdriver.common.by import By
 
-def get_bibs(driver, search, directory, period):
+def get_bibs(driver, directory, place, period):
     '''
     Função para as numerações dos acervos (bibs) com ocorrências da busca.
     '''
@@ -22,7 +22,7 @@ def get_bibs(driver, search, directory, period):
         else:
             l_bibs.append(bib_final)
             #chama a função para encontrar infos gerais dos acervos
-            get_infos_acervos(driver, directory, period, 'page01')
+            get_infos_acervos(driver, directory, place, period, 'page01')
     if len(l_bibs) == 50:
         next_btn = driver.find_element(By.XPATH, '//*[@id="ListaRadGrid_ctl00"]/tfoot/tr/td/div/div[3]/button[1]').click()
         time.sleep(2)
@@ -36,7 +36,7 @@ def get_bibs(driver, search, directory, period):
             else:
                 l_bibs.append(bib_final)
                 #chama a função para encontrar infos gerais dos acervos
-                get_infos_acervos(driver, directory, period, 'page02')
+                get_infos_acervos(driver, directory, place, period, 'page02')
     return l_bibs
 
 def bib_list(bibs):

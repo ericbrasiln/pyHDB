@@ -15,7 +15,7 @@ def get_infos(driver):
     '''
     # Criar dicionário para armazenar as informações
     infos = {}
-    # Usar BeautifulSoup para pegar o conteúo
+    # Usar BeautifulSoup para pegar o conteúdo
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     totals_div = soup.find('div', id='totaisdiv')
     div_pages = totals_div.find('div', id='paginastotdiv')
@@ -33,10 +33,10 @@ def get_infos(driver):
     infos['Total de páginas analisadas'] = total_pages
     infos['Total de Acervos analisados'] = total_acervos
     infos['Total de ocorrências encontradas'] = total_occur
-    infos['Frequência de Ocorrências por Página'] = freq_occur
+    infos['Número de páginas para uma ocorrência'] = freq_occur
     return infos 
 
-def get_infos_acervos(driver, directory, period, page):
+def get_infos_acervos(driver, directory, place, period, page):
     '''
     Função para coletar informações gerais de cada acervo: Total de páginas analisadas,
     Total de Acervos analisados, Total de Ocorrências, Frequência de Ocorrências X Páginas.
@@ -64,7 +64,9 @@ def get_infos_acervos(driver, directory, period, page):
     csv_path = os.path.join(directory, 'RELATÓRIOS')
     if not os.path.exists(csv_path):
         os.makedirs(csv_path)
-    csv_name = os.path.join(csv_path, f'infos_acervos_{period}_{page}.csv')
+    # Limpar `period` para usar no nome do arquivo
+    period = period.replace(' ', '')
+    csv_name = os.path.join(csv_path, f'infos_acervos_{place}_{period}_{page}.csv')
     # Criar arquivo CSV usando pandas
-    df = pd.DataFrame(infos_acervos_final, columns=['Acervo', 'Total de Páginas', 'Total de Ocorrências', 'Frequência de ocorrências X páginas'])
+    df = pd.DataFrame(infos_acervos_final, columns=['Acervo', 'Total de Páginas', 'Total de Ocorrências', 'Número de Páginas para uma Ocorrência'])
     df.to_csv(csv_name, index=False)
