@@ -17,12 +17,10 @@ from general_infos import get_infos
 import time, os
 from datetime import datetime
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
 
 # Definição de variáveis globais: url e data
 url = 'http://memoria.bn.br/hdb/'
@@ -55,8 +53,7 @@ chrome_options.add_argument("--headless=new")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--start-maximized")
 chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
-s=Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=s, options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 # Passa a url para o driver
 driver.get(url)
 

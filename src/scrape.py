@@ -8,25 +8,33 @@ import pandas as pd
 from imgs import*
 from reports import*
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.chrome.service import Service
 
 def scrapeDados(url, search, final_bib, directory, date, date_time):
     '''
     Função para raspar todos os dados de cada página com ocorrências de todos os jornais listados.
     Também cria os relatórios da raspagem de cada acervo.
     '''
-    chrome_options = Options()  
+    chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
-    s=Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=s, options=chrome_options)
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-infobars")
+    chrome_options.add_argument("--disable-notifications")
+    chrome_options.add_argument("--disable-popup-blocking")
+    chrome_options.add_argument("--disable-web-security")
+    chrome_options.add_argument("--incognito")
+    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
+
+    driver = webdriver.Chrome(options=chrome_options)
+
     try:
         driver.get(url)
         time.sleep(1)
