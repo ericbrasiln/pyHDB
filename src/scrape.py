@@ -9,7 +9,7 @@ from imgs import*
 from reports import*
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
@@ -20,20 +20,15 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
     Função para raspar todos os dados de cada página com ocorrências de todos os jornais listados.
     Também cria os relatórios da raspagem de cada acervo.
     '''
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--disable-infobars")
-    chrome_options.add_argument("--disable-notifications")
-    chrome_options.add_argument("--disable-popup-blocking")
-    chrome_options.add_argument("--disable-web-security")
-    chrome_options.add_argument("--incognito")
-    chrome_options.add_argument("--start-maximized")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
+    options = Options()
+    # Adiciona argumentos às opções
+    options.set_preference("intl.accept_languages", "pt-BR, pt")
+    options.add_argument("--headless")
+    options.add_argument("--start-maximized")
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
+    driver = webdriver.Firefox(options=options)
 
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Firefox(options=options)
 
     try:
         driver.get(url)
@@ -59,7 +54,7 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
             'a FBN.\n'
             '- Fechando "Aviso"...\n')
         # Clicar para fechar o aviso
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable(
             (By.XPATH, '//*[@id="RadWindowWrapper_PesqOpniaoRadWindow"]/div[1]/div/ul/li/span')
             )).click()
     except:
@@ -160,6 +155,6 @@ def scrapeDados(url, search, final_bib, directory, date, date_time):
         errors_list.append(final_bib)
         report_erro (directory, search, errors_list, date_time)
         print('=-'*50)
-    print(f'Acervo não raspado: {errors_list}\n')
+    print(f'Acervo não raspado: {errors_list}\n')   
     # Fecha o navegador
     driver.quit()
