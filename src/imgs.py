@@ -80,7 +80,7 @@ def get_img(driver, bib_final, pag, diretorio):
                     response = urllib.request.Request(img_large, headers=headers)
                     response = urllib.request.urlopen(response, timeout=20)
                 except Exception as e:
-                    print (e)
+                    print (f'Erro ao carregar imagem: {e}')
                 if (response.headers['Content-Type'] == "image/jpeg"):
                     print(f'- Baixando imagem {img_name} com zoom.')
                     # Salva a imagem
