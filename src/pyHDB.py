@@ -5,7 +5,7 @@ description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Di
 Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.
 license: MIT
 Python 3.9.5
-email: ericbrasiln@protonmail.com
+email: ericbrasiln@proton.me
 '''
 # Importação de bibliotecas, módulos e funções
 from parameters import set_journal, set_place, set_search, set_time
@@ -18,7 +18,7 @@ import time, os
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -32,28 +32,30 @@ date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 print('=-'*50)
 print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
-    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
+    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar'\
     'informações nos servidores da instituição.\n'
     '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as '\
-    'etapas \nde sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
-    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab \ne do LABHDUFBA.\n'
-    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu código \ne '\
+    'etapas de sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
+    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab e do LABHDUFBA.\n'
+    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu código e '\
     'dataset estão disponibilizados publicamente, com licença MIT.\n'
     '\n- Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso.\n'
     '\n- A busca foi elaborada a partir das demandas de pesquisa pessoais e serão explicadas no artigo.\n'
-    '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos \n'\
+    '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos '\
     'jornais com alguma ocorrência, até o limite de 100 jornais (segunda página de resultados).\n')
 print('=-'*50)
 
 # Opção para remover a impressão de logs na tela
-os.environ['WDM_LOG_LEVEL'] = '0'
+# os.environ['WDM_LOG_LEVEL'] = '0'
 # Definição das opções do driver
-chrome_options = Options()
-chrome_options.add_argument("--headless=new")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--start-maximized")
-chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
-driver = webdriver.Chrome(options=chrome_options)
+options = Options()
+# Adiciona argumentos às opções
+options.set_preference("intl.accept_languages", "pt-BR, pt")
+options.add_argument("--headless")
+options.add_argument("--start-maximized")
+options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
+driver = webdriver.Firefox(options=options)
+
 # Passa a url para o driver
 driver.get(url)
 
@@ -148,7 +150,23 @@ if url[-5:] == 'Pesq=':
 else:
       #Aguarda carregar a página
       print('\n\033[1;91m- Aguardando os resultados serem carregados...\033[0m')
+      time.sleep(3)
+      if driver.current_url == "about:blank":
+            print('\033[1;91m- A página de resultados não carregou corretamente. Tentando novamente...\033[0m')
+            # recarregar a página
+            driver.refresh()
+            print('\033[1;91m- Aguardando os resultados serem carregados novamente...\033[0m')
+            time.sleep(1)
+            if driver.current_url[-5:] == 'Pesq=':
+                  url = driver.current_url[:-5] + code_search
+                  # passa url para o driver
+                  driver.get(url)
+                  #refresh a página
+                  driver.refresh()
+                  #Aguarda carregar a página
+                  time.sleep(1)
       load_pag = WebDriverWait(driver, 360).until(EC.invisibility_of_element((By.ID, 'RadAjaxLoadingPanel1')))
+      print('\033[1;36m- Página de resultados carregada. Coletando dados gerais...\033[0m')
       time.sleep(5)
 
 # Remove aspas e espaços do termo de busca
@@ -182,6 +200,10 @@ else:
       # Chamar função para realizar a busca e a raspagem em cada acervo
       journal_search(final_bibs, date, search_term, directory)
       print('\n\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m\n')
+# limpando cache do selenium
+driver.delete_all_cookies()
 # Fechar todos os navegadores abertos 
 driver.quit()
+# kill processo do driver
+os.system('pkill geckodriver')
     
