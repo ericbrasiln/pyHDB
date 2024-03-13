@@ -5,6 +5,7 @@ description: Funções relacionadas às raspagens de dados dos acervos com ocorr
 ncias.
 """
 import time
+import os
 import pandas as pd
 from imgs import *
 from reports import *
@@ -95,7 +96,7 @@ em contato com a FBN.\n'
         done = True
     # Executar a função de clicar no botão de zoom duas vezes se o jornal não \
     # possuir restrição
-    if warning != None:
+    if warning is not None:
         print(
             'Jornal com restrição de uso. Download da imagem não será realizad\
 o.'
@@ -150,7 +151,7 @@ o.'
             print('=-' * 50)
             # Chamar funções para baixar imagem se o jornal não possuir
             # restrição
-            if warning != None:
+            if warning is not None:
                 print(
                     'Jornal com restrição de uso. Download da imagem não será \
 realizado.'
