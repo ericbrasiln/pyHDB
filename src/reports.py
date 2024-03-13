@@ -1,14 +1,16 @@
-'''
+"""
 title: pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira
 author: Eric Brasil
-description: Funções relacionadas a criação de relatórios das buscas e raspagens.
-'''
+description: Funções relacionadas a criação de relatórios das buscas e raspage\
+ns.
+"""
 import os
 
+
 def report_path(directory, dir_name):
-    '''
+    """
     Função para criar caminho do relatório
-    '''
+    """
     # Criar pasta para salvar relatórios
     report_path = os.path.join(directory, 'RELATÓRIOS')
     if not os.path.exists(report_path):
@@ -16,10 +18,11 @@ def report_path(directory, dir_name):
     out_report = os.path.join(report_path, dir_name)
     return out_report
 
-def report_erro (directory,search, bibs, date_time):
-    '''
+
+def report_erro(directory, search, bibs, date_time):
+    """
     Função para criar relatório com erro inicial.
-    '''
+    """
     # Criar pasta para salvar relatórios
     if type(bibs) == list:
         bibs = ', '.join(bibs)
@@ -33,13 +36,16 @@ def report_erro (directory,search, bibs, date_time):
         f'- Data e hora da busca: {date_time};\n'
         f'- Termo da busca: {search};\n'
         f'- Acervo com ocorrências que não pode ser acessado: {bibs};\n'
-        )
+    )
     report.close
 
-def report_search(directory, search, date_time, l_bibs, local, periodo, periodico, info_dict):
-    '''
+
+def report_search(
+    directory, search, date_time, l_bibs, local, periodo, periodico, info_dict
+):
+    """
     Função para criar o relatório geral da busca
-    '''
+    """
     # Chamar função para criar caminho do relatório
     out_report = report_path(directory, 'GERAL')
     # Criar relatório
@@ -52,16 +58,18 @@ def report_search(directory, search, date_time, l_bibs, local, periodo, periodic
         f'- Período da busca: {periodo};\n'
         f'- Periódico da busca: {periodico};\n'
         f'- Termo da busca: {search};\n'
-        f'- Lista de acervos com ocorrências (máx. de 100) e quantidade de ocorrências: {l_bibs};\n'
+        f'- Lista de acervos com ocorrências (máx. de 100) e quantidade de oco\
+rrências: {l_bibs};\n'
         f'- Total de acervos com ocorrências (máx. de 100): {len(l_bibs)}\n'
         f'- Informações adicionais: {info_dict}'
-        )
+    )
     report.close
 
+
 def report_journal(directory, pasta, bib_final, date_time, search, tot, url):
-    '''
+    """
     Função para criar relatório específico de acervo
-    '''
+    """
     # Limpar nome da pasta
     pasta = pasta.replace(' ', '_')
     pasta = pasta.replace('-', '')
@@ -86,27 +94,29 @@ def report_journal(directory, pasta, bib_final, date_time, search, tot, url):
             f'- Acervo: {pasta};\n'
             f'- Total de ocorrências: {tot};\n'
             f'- Link da lista de resultados: {url}'
-            )
+        )
         report.close
     else:
         print('Relatório já criado')
 
+
 def report_search_bib(directory, search, date_time, bibs):
-    '''
+    """
     Função para criar o relatório geral da busca de uma lista de acervos
-    '''
+    """
     # Chamar função para criar caminho do relatório
     out_report = report_path(directory, 'GERAL')
     bibsString = '_'.join(bibs)
-    bibsString = bibsString.replace("'","")
+    bibsString = bibsString.replace("'", '')
     # Criar relatório
     report = open(f'{out_report}_{bibsString}_{search}_{date_time}.txt', 'w')
     # Inserir dados no relatório
     report.write(
-        f'=-=-=-=-=-Relatório geral da raspagem da HDB com lista de acervos-=-=-=-=-=\n'
+        f'=-=-=-=-=-Relatório geral da raspagem da HDB com lista de acervos-=-\
+=-=-=-=\n'
         f'- Data e hora da busca: {date_time};\n'
         f'- Termo da busca: {search};\n'
         f'- Total de acervos: {len(bibs)};\n'
         f'- Lista de acervos: {bibs}\n'
-        )
+    )
     report.close

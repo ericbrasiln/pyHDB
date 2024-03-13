@@ -1,18 +1,22 @@
-'''
+"""
 title: pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira
 author: Eric Brasil
 description: Funções relacionadas à coleta de informações gerais da busca.
-'''
+"""
 import pandas as pd
 import os
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 
+
 def get_infos(driver):
-    '''
-    Função para coletar informações gerais da busca: Total de páginas analisadas,
-    Total de Acervos analisados, Total de Ocorrências, Frequência de Ocorrências X Páginas.
-    '''
+    """
+    Função para coletar informações gerais da busca:
+    Total de páginas analisadas,
+    Total de Acervos analisados,
+    Total de Ocorrências,
+    Frequência de Ocorrências X Páginas.
+    """
     # Criar dicionário para armazenar as informações
     infos = {}
     # Usar BeautifulSoup para pegar o conteúdo
@@ -34,17 +38,22 @@ def get_infos(driver):
     infos['Total de Acervos analisados'] = total_acervos
     infos['Total de ocorrências encontradas'] = total_occur
     infos['Número de páginas para uma ocorrência'] = freq_occur
-    return infos 
+    return infos
+
 
 def get_infos_acervos(driver, directory, place, period, page):
-    '''
-    Função para coletar informações gerais de cada acervo: Total de páginas analisadas,
-    Total de Acervos analisados, Total de Ocorrências, Frequência de Ocorrências X Páginas.
-    '''
+    """
+    Função para coletar informações gerais de cada acervo: Total de páginas an\
+alisadas,
+    Total de Acervos analisados, Total de Ocorrências, Frequência de Ocorrênci\
+as X Páginas.
+    """
     # Criar lista para armazenar as informações
     infos_acervos_final = []
     # Encontrar tbody usando XPATH
-    tbody = driver.find_element(By.XPATH, '//*[@id="ListaRadGrid_ctl00"]/tbody')
+    tbody = driver.find_element(
+        By.XPATH, '//*[@id="ListaRadGrid_ctl00"]/tbody'
+    )
     # Encontrar todos os tr e iterar
     trs = tbody.find_elements(By.TAG_NAME, 'tr')
     for tr in trs:
@@ -59,14 +68,24 @@ def get_infos_acervos(driver, directory, place, period, page):
             freq_occur = int(total_pages) / int(total_occur)
             # Lista para armazenar as informações e adicionar ao final da lista
             infos_acervos = [acervo, total_pages, total_occur, freq_occur]
-            infos_acervos_final.append(infos_acervos)             
+            infos_acervos_final.append(infos_acervos)
     # Criar diretório para armazenar os dados
     csv_path = os.path.join(directory, 'RELATÓRIOS')
     if not os.path.exists(csv_path):
         os.makedirs(csv_path)
     # Limpar `period` para usar no nome do arquivo
     period = period.replace(' ', '')
-    csv_name = os.path.join(csv_path, f'infos_acervos_{place}_{period}_{page}.csv')
+    csv_name = os.path.join(
+        csv_path, f'infos_acervos_{place}_{period}_{page}.csv'
+    )
     # Criar arquivo CSV usando pandas
-    df = pd.DataFrame(infos_acervos_final, columns=['Acervo', 'Total de Páginas', 'Total de Ocorrências', 'Número de Páginas para uma Ocorrência'])
+    df = pd.DataFrame(
+        infos_acervos_final,
+        columns=[
+            'Acervo',
+            'Total de Páginas',
+            'Total de Ocorrências',
+            'Número de Páginas para uma Ocorrência',
+        ],
+    )
     df.to_csv(csv_name, index=False)
