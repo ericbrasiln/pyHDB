@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def human_behavior(driver):
-      time.sleep(random.uniform(2, 5))  # delay aleatório
+      time.sleep(random.uniform(2, 5))  # delay aleatório para simular comportamento humano
       driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
       time.sleep(random.uniform(1, 3))
 

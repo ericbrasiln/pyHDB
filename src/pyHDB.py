@@ -52,11 +52,11 @@ os.environ['WDM_LOG_LEVEL'] = '0'
 # Definição das opções do driver
 options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
-options.add_argument("--start-maximized")  # Note os dois traços
+options.add_argument("--start-maximized")
 options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.111 Safari/537.36')
 
 driver = uc.Chrome(options=options)
-
+# Adiciona parâmetros para evitar detecção do Selenium
 stealth(driver,
         languages=["en-US", "en"],
         vendor="Google Inc.",
@@ -65,6 +65,7 @@ stealth(driver,
         renderer="Intel Iris OpenGL Engine",
         fix_hairline=True,
         )
+# Remove a propriedade webdriver para evitar detecção
 driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
     'source': '''
         Object.defineProperty(navigator, 'webdriver', {get: () => undefined})
