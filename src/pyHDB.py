@@ -8,7 +8,7 @@ Python 3.9.5
 email: ericbrasiln@protonmail.com
 '''
 # Importação de bibliotecas, módulos e funções
-from parameters import set_journal, set_place, set_search, set_time
+from parameters import set_journal, set_place, set_search, set_time, human_behavior
 from validate_period import validate_period
 from bibs import get_bibs, bib_list
 from search_journals import journal_search
@@ -21,6 +21,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
+import undetected_chromedriver as uc
+from selenium_stealth import stealth
 
 # Definição de variáveis globais: url e data
 url = 'http://memoria.bn.br/hdb/'
@@ -48,12 +50,27 @@ print('=-'*50)
 # Opção para remover a impressão de logs na tela
 os.environ['WDM_LOG_LEVEL'] = '0'
 # Definição das opções do driver
-chrome_options = Options()
-chrome_options.add_argument("--headless=new")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--start-maximized")
-chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
-driver = webdriver.Chrome(options=chrome_options)
+options = webdriver.ChromeOptions()
+options.add_argument("--headless=new")
+options.add_argument("--start-maximized")  # Note os dois traços
+options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.111 Safari/537.36')
+
+driver = uc.Chrome(options=options)
+
+stealth(driver,
+        languages=["en-US", "en"],
+        vendor="Google Inc.",
+        platform="Win32",
+        webgl_vendor="Intel Inc.",
+        renderer="Intel Iris OpenGL Engine",
+        fix_hairline=True,
+        )
+driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
+    'source': '''
+        Object.defineProperty(navigator, 'webdriver', {get: () => undefined})
+    '''
+})
+
 # Passa a url para o driver
 driver.get(url)
 
@@ -105,15 +122,19 @@ print(f'\n\033[1;36m- Definindo parâmetros da busca...\033[0m')
 
 # Chama a função para encontrar e clicar na seta para abrir as opções de 'locais'
 set_place(driver, place)
+human_behavior(driver)
 
 # Função para encontrar o parâmetro período
 set_time(driver, period)
+human_behavior(driver)
 
 # Função para encontrar o parâmetro periódico
 set_journal(driver, journal)
+human_behavior(driver)
 
 # Função para inserir o termo de busca
 set_search(driver,search_term)
+human_behavior(driver)
 
 # Encontra botão para submeter a busca
 search_panel = driver.find_element(By.ID, 'PesquisarBtn3Panel')
