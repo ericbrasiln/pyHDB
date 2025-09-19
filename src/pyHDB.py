@@ -4,11 +4,11 @@ author: Eric Brasil
 description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).
 Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.
 license: MIT
-Python 3.9.5
+Python 3.11.9
 email: ericbrasiln@protonmail.com
 '''
 # Importação de bibliotecas, módulos e funções
-from parameters import set_journal, set_place, set_search, set_time
+from parameters import set_journal, set_place, set_search, set_time, human_behavior
 from validate_period import validate_period
 from bibs import get_bibs, bib_list
 from search_journals import journal_search
@@ -21,6 +21,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
+import undetected_chromedriver as uc
+from selenium_stealth import stealth
 
 # Definição de variáveis globais: url e data
 url = 'http://memoria.bn.br/hdb/'
@@ -32,28 +34,40 @@ date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 print('=-'*50)
 print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
-    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
-    'informações nos servidores da instituição.\n'
-    '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as '\
-    'etapas \nde sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
-    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab \ne do LABHDUFBA.\n'
-    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu código \ne '\
-    'dataset estão disponibilizados publicamente, com licença MIT.\n'
+    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar informações nos servidores da instituição.\n'
+    '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as etapas de sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
+    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab e do LABHDUFBA.\n'
+    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu códigone dataset estão disponibilizados publicamente, com licença MIT.\n'
     '\n- Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso.\n'
     '\n- A busca foi elaborada a partir das demandas de pesquisa pessoais e serão explicadas no artigo.\n'
-    '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos \n'\
-    'jornais com alguma ocorrência, até o limite de 100 jornais (segunda página de resultados).\n')
+    '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos jornais com alguma ocorrência, até o limite de 100 jornais (segunda página de resultados).\n')
 print('=-'*50)
 
 # Opção para remover a impressão de logs na tela
 os.environ['WDM_LOG_LEVEL'] = '0'
 # Definição das opções do driver
-chrome_options = Options()
-chrome_options.add_argument("--headless=new")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--start-maximized")
-chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
-driver = webdriver.Chrome(options=chrome_options)
+options = webdriver.ChromeOptions()
+options.add_argument("--headless=new")
+options.add_argument("--start-maximized")
+options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.111 Safari/537.36')
+
+driver = uc.Chrome(options=options)
+# Adiciona parâmetros para evitar detecção do Selenium
+stealth(driver,
+        languages=["en-US", "en"],
+        vendor="Google Inc.",
+        platform="Win32",
+        webgl_vendor="Intel Inc.",
+        renderer="Intel Iris OpenGL Engine",
+        fix_hairline=True,
+        )
+# Remove a propriedade webdriver para evitar detecção
+driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
+    'source': '''
+        Object.defineProperty(navigator, 'webdriver', {get: () => undefined})
+    '''
+})
+
 # Passa a url para o driver
 driver.get(url)
 
@@ -105,15 +119,19 @@ print(f'\n\033[1;36m- Definindo parâmetros da busca...\033[0m')
 
 # Chama a função para encontrar e clicar na seta para abrir as opções de 'locais'
 set_place(driver, place)
+human_behavior(driver)
 
 # Função para encontrar o parâmetro período
 set_time(driver, period)
+human_behavior(driver)
 
 # Função para encontrar o parâmetro periódico
 set_journal(driver, journal)
+human_behavior(driver)
 
 # Função para inserir o termo de busca
 set_search(driver,search_term)
+human_behavior(driver)
 
 # Encontra botão para submeter a busca
 search_panel = driver.find_element(By.ID, 'PesquisarBtn3Panel')

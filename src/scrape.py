@@ -14,26 +14,37 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import WebDriverException
+import undetected_chromedriver as uc
+from selenium_stealth import stealth
 
 def scrapeDados(url, search, final_bib, directory, date, date_time):
     '''
     Função para raspar todos os dados de cada página com ocorrências de todos os jornais listados.
     Também cria os relatórios da raspagem de cada acervo.
     '''
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--disable-infobars")
-    chrome_options.add_argument("--disable-notifications")
-    chrome_options.add_argument("--disable-popup-blocking")
-    chrome_options.add_argument("--disable-web-security")
-    chrome_options.add_argument("--incognito")
-    chrome_options.add_argument("--start-maximized")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
-
-    driver = webdriver.Chrome(options=chrome_options)
+    # Definição das opções do driver
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless=new")
+    options.add_argument("--start-maximized")
+    options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.111 Safari/537.36')
+    
+    driver = uc.Chrome(options=options)
+    # Adiciona parâmetros para evitar detecção do Selenium
+    stealth(driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+            )
+    # Remove a propriedade webdriver para evitar detecção
+    driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
+        'source': '''
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined})
+        '''
+    })
+    
 
     try:
         driver.get(url)

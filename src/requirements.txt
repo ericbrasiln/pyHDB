@@ -3,3 +3,5 @@ pandas
 selenium
 webdriver-manager
 wget
+undetected_chromedriver
+selenium_stealth
