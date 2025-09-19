@@ -14,6 +14,7 @@ def get_bibs(driver, directory, place, period):
     list_of_bibs = driver.find_elements(By.ID, 'BibMaisButton')
     l_bibs = []
     for bib in list_of_bibs:
+        print(bib)
         value = bib.get_attribute('onmouseover')
         value1 = value.replace('javascript:showMenu(event,','')
         bib_final = value1.replace(');','')
