@@ -4,7 +4,7 @@ author: Eric Brasil
 description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).
 Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.
 license: MIT
-Python 3.9.5
+Python 3.11.9
 email: ericbrasiln@protonmail.com
 '''
 # Importação de bibliotecas, módulos e funções
@@ -34,17 +34,13 @@ date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 print('=-'*50)
 print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
-    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'\
-    'informações nos servidores da instituição.\n'
-    '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as '\
-    'etapas \nde sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
-    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab \ne do LABHDUFBA.\n'
-    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu código \ne '\
-    'dataset estão disponibilizados publicamente, com licença MIT.\n'
+    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar informações nos servidores da instituição.\n'
+    '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as etapas de sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
+    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab e do LABHDUFBA.\n'
+    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu códigone dataset estão disponibilizados publicamente, com licença MIT.\n'
     '\n- Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso.\n'
     '\n- A busca foi elaborada a partir das demandas de pesquisa pessoais e serão explicadas no artigo.\n'
-    '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos \n'\
-    'jornais com alguma ocorrência, até o limite de 100 jornais (segunda página de resultados).\n')
+    '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos jornais com alguma ocorrência, até o limite de 100 jornais (segunda página de resultados).\n')
 print('=-'*50)
 
 # Opção para remover a impressão de logs na tela
