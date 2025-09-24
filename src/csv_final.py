@@ -46,7 +46,6 @@ def df_final(csvs_path, search):
        csv_names.append(f)
     #Pandas concatena todos os arquivos CSV, ignorando o antigo index
     frame = pd.concat(csvs_list, ignore_index=True)
-    frame.drop(columns={'Unnamed: 0'}, inplace = True)
     frame['Ano'] = frame['Ano'].str.replace('.0','', regex=False)
     # Criar diretório para CSV final
     csvFinal = os.path.join('CSV_FINAL') 
