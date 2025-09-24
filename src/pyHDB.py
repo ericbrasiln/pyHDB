@@ -108,6 +108,18 @@ print('Orientações para busca:\n'
       '- Não use acentos ou caracteres especiais;\n'
       '- É recomendado não utilizar mais do que três palavras.\n')
 search_term = str(input('Digite o termo de busca: '))
+
+# 5 - Formato de saída
+print('\n\033[4;36m5 - Formato de saída\033[0m')
+print('1 - CSV (padrão)\n2 - CSV e JSON')
+try:
+    output_mode = int(input('Escolha o formato [1/2]: ') or '1')
+    if output_mode not in (1, 2):
+        print('Opção inválida. Usando padrão: 1 - CSV.')
+        output_mode = 1
+except Exception:
+    output_mode = 1
+
 option = driver.find_element(By.XPATH, '//*[@id="RadTabStrip1"]/div')
 lis_options = option.find_elements(By.TAG_NAME, 'li')
 #Seleciona a opção inicial de buscar pelo Local e clica no botão de busca
@@ -198,7 +210,7 @@ else:
       # Chamar a função para criar o relatório geral da busca
       report_search(directory, search_term, date_time, l_bibs, place, period, journal, infos_dict)
       # Chamar função para realizar a busca e a raspagem em cada acervo
-      journal_search(final_bibs, date, search_term, directory)
+      journal_search(final_bibs, date, search_term, directory, output_mode=output_mode)
       print('\n\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m\n')
 # Fechar todos os navegadores abertos 
 driver.quit()
