@@ -26,9 +26,10 @@ def _last_occurrence_from_csv(csv_path: str) -> int:
         return len(rows) - 1
 
 
-def journal_search(list_of_bibs, date, search_term, directory):
+def journal_search(list_of_bibs, date, search_term, directory, output_mode: int = 1):
     '''
     Realiza a busca em cada acervo com ocorrências e cria o CSV final consolidado.
+    output_mode: 1 = CSV (padrão); 2 = CSV + JSON/JSONL.
     Suporta retomada a partir do cache localizado em HDB/<termo>/<data>/.cache/.
     '''
     # Normaliza termo
@@ -70,4 +71,4 @@ def journal_search(list_of_bibs, date, search_term, directory):
             scrapeDados(url, safe_search, journal, base_path, date, date_time, start_from=1)
 
     # CSV final consolidado (concatena tudo que está em CSV/)
-    df_final(csv_path, safe_search)
+    df_final(csv_path, safe_search, output_mode=output_mode)
