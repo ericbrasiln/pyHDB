@@ -9,7 +9,7 @@ from datetime import datetime
 import os
 import csv
 
-CACHE_DIR_NAME = ".cache"  # ficará dentro de HDB/<termo>/<data>/.cache
+CACHE_DIR_NAME = ".cache" 
 
 def _last_occurrence_from_csv(csv_path: str) -> int:
     """
@@ -52,7 +52,7 @@ def journal_search(list_of_bibs, date, search_term, directory, output_mode: int 
         cache_name = os.path.join(cache_dir, f"{safe_search}_{journal}.csv")
 
         if os.path.exists(csv_name):
-            print('CSV já existe, passando para próximo acervo...')
+            print(f'CSV {journal} já existe, passando para próximo acervo...')
             continue
 
         # Timestamp para relatórios/logs
@@ -66,7 +66,9 @@ def journal_search(list_of_bibs, date, search_term, directory, output_mode: int 
         if os.path.exists(cache_name):
             last = _last_occurrence_from_csv(cache_name)
             start_from = last + 1
-            print(f"CSV em cache detectado ({cache_name}). Última ocorrência = {last}. Retomando em {start_from}.")
+            # imprimir nome do cache mas fatiando o caminho para mostrar só o nome do arquivo
+            print(f"Cache CSV detected ({os.path.basename(cache_name)}). Last occurrence = {last}. Resuming at {start_from}.")
+            print(f"CSV {os.path.basename(cache_name)} em cache detectado.")
             scrapeDados(
                 url, safe_search, journal, base_path, date, date_time,
                 start_from=start_from, download_imagens=download_imagens

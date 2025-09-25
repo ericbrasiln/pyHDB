@@ -34,7 +34,7 @@ def report_erro (directory,search, bibs, date_time):
         f'- Termo da busca: {search};\n'
         f'- Acervo com ocorrências que não pode ser acessado: {bibs};\n'
         )
-    report.close
+    report.close()
 
 def report_search(directory, search, date_time, l_bibs, local, periodo, periodico, info_dict):
     '''
@@ -56,7 +56,7 @@ def report_search(directory, search, date_time, l_bibs, local, periodo, periodic
         f'- Total de acervos com ocorrências (máx. de 100): {len(l_bibs)}\n'
         f'- Informações adicionais: {info_dict}'
         )
-    report.close
+    report.close()
 
 def report_journal(directory, pasta, bib_final, date_time, search, tot, url):
     '''
@@ -109,4 +109,4 @@ def report_search_bib(directory, search, date_time, bibs):
         f'- Total de acervos: {len(bibs)};\n'
         f'- Lista de acervos: {bibs}\n'
         )
-    report.close
+    report.close()
