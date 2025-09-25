@@ -224,12 +224,23 @@ def _fast_forward_to(driver, target: int, total: int, log_every: int = 5,
 # Função principal
 # =========================
 
-def scrapeDados(url, search, final_bib, directory, date, date_time, start_from=1, ff_click_pause=1.0):
+def scrapeDados(
+    url,
+    search,
+    final_bib,
+    directory,
+    date,
+    date_time,
+    start_from=1,
+    ff_click_pause=1.0,
+    download_imagens: bool = True,
+):
     """
     Raspa todas as ocorrências de um acervo, com retomada por cache.
     - directory: base HDB/<termo>/<data>
     - start_from: ocorrência alvo para retomar (1-indexed)
     - ff_click_pause: pausa entre cliques (segundos) na etapa de fast-forward e no loop
+    - download_imagens: quando False, coleta apenas metadados (não baixa imagens)
     """
     # ===== Driver (undetected_chromedriver + stealth) =====
     options = webdriver.ChromeOptions()
@@ -275,7 +286,7 @@ def scrapeDados(url, search, final_bib, directory, date, date_time, start_from=1
     except Exception:
         warning = None
 
-    # ===== Garante imagem base carregada =====
+    # ===== Garante imagem base carregada (a página em si) =====
     WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, 'DocumentoImg')))
 
     # ===== Lê contador e fast-forward (se necessário) =====
@@ -322,10 +333,12 @@ def scrapeDados(url, search, final_bib, directory, date, date_time, start_from=1
             time.sleep(0.5)
             cur, tot = read_counter()
 
-    # ===== Zoom quando permitido =====
+    # ===== Zoom (somente se iremos baixar imagens e não houver restrição) =====
+    if not download_imagens:
+        print("[Modo metadados] Download de imagens desativado por opção do usuário.")
     if warning is not None:
         print('Jornal com restrição de uso. Download de imagens será pulado.')
-    else:
+    elif download_imagens:
         for _ in range(2):
             try:
                 zoom_in(driver)
@@ -368,8 +381,8 @@ def scrapeDados(url, search, final_bib, directory, date, date_time, start_from=1
                   f"- Edição: {issue[9:] if len(issue) >= 9 else issue}\n- Página: {p}\n- Link: {link}\n")
             print('=-' * 50)
 
-            # imagem
-            if warning is not None:
+            # imagem (só se permitido e desejado)
+            if (warning is not None) or (not download_imagens):
                 img_name = 'NA'
             else:
                 try:
@@ -422,4 +435,3 @@ def scrapeDados(url, search, final_bib, directory, date, date_time, start_from=1
         print('=-' * 50)
 
     driver.quit()
-

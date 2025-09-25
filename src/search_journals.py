@@ -26,10 +26,11 @@ def _last_occurrence_from_csv(csv_path: str) -> int:
         return len(rows) - 1
 
 
-def journal_search(list_of_bibs, date, search_term, directory, output_mode: int = 1):
+def journal_search(list_of_bibs, date, search_term, directory, output_mode: int = 1, download_imagens: bool = True):
     '''
     Realiza a busca em cada acervo com ocorrências e cria o CSV final consolidado.
-    output_mode: 1 = CSV (padrão); 2 = CSV + JSON/JSONL.
+    - output_mode: 1 = CSV (padrão); 2 = CSV + JSON/JSONL.
+    - download_imagens: quando False, coleta apenas metadados (não baixa imagens).
     Suporta retomada a partir do cache localizado em HDB/<termo>/<data>/.cache/.
     '''
     # Normaliza termo
@@ -66,9 +67,15 @@ def journal_search(list_of_bibs, date, search_term, directory, output_mode: int 
             last = _last_occurrence_from_csv(cache_name)
             start_from = last + 1
             print(f"CSV em cache detectado ({cache_name}). Última ocorrência = {last}. Retomando em {start_from}.")
-            scrapeDados(url, safe_search, journal, base_path, date, date_time, start_from=start_from)
+            scrapeDados(
+                url, safe_search, journal, base_path, date, date_time,
+                start_from=start_from, download_imagens=download_imagens
+            )
         else:
-            scrapeDados(url, safe_search, journal, base_path, date, date_time, start_from=1)
+            scrapeDados(
+                url, safe_search, journal, base_path, date, date_time,
+                start_from=1, download_imagens=download_imagens
+            )
 
     # CSV final consolidado (concatena tudo que está em CSV/)
     df_final(csv_path, safe_search, output_mode=output_mode)
