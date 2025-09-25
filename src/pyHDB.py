@@ -120,6 +120,16 @@ try:
 except Exception:
     output_mode = 1
 
+# 6 - Baixar imagens ou coletar apenas metadados
+print('\n\033[4;36m6 - Download de imagens\033[0m')
+print('Deseja baixar as imagens das páginas encontradas?\n'
+      '- Responda "s" para baixar imagens (padrão);\n'
+      '- Responda "n" para coletar apenas metadados (sem imagens).')
+resp_img = input('Baixar imagens? [S/n]: ').strip().lower()
+download_imagens = False if resp_img == 'n' else True
+if not download_imagens:
+    print('\033[1;33m[Modo metadados]\033[0m As imagens não serão baixadas; somente metadados serão coletados.')
+
 option = driver.find_element(By.XPATH, '//*[@id="RadTabStrip1"]/div')
 lis_options = option.find_elements(By.TAG_NAME, 'li')
 #Seleciona a opção inicial de buscar pelo Local e clica no botão de busca
@@ -210,8 +220,7 @@ else:
       # Chamar a função para criar o relatório geral da busca
       report_search(directory, search_term, date_time, l_bibs, place, period, journal, infos_dict)
       # Chamar função para realizar a busca e a raspagem em cada acervo
-      journal_search(final_bibs, date, search_term, directory, output_mode=output_mode)
+      journal_search(final_bibs, date, search_term, directory, output_mode=output_mode, download_imagens=download_imagens)
       print('\n\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m\n')
 # Fechar todos os navegadores abertos 
 driver.quit()
-    
