@@ -39,7 +39,7 @@ date = now.strftime("%Y-%m-%d")
 date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 
 # Imprimir informações gerais sobre o programa
-print('=-'*50)
+print('=-' * 30)
 print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'
     '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
     '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar \n'
@@ -50,7 +50,7 @@ print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico p
     'e do LABHDUFBA.\n'
     '\n- Esse script analisa um acervo, ou uma lista de acervos, definidas pelo usuário. Foi pensado para sanar\n'
     'erros no processo de raspagem que podem acontecer, principalmente em buscas com milhares de ocorrências.')
-print('=-'*50)
+print('=-' * 30)
 
 # Definição da lista de acervos
 bibs_list = []

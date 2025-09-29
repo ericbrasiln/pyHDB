@@ -5,7 +5,7 @@ description: Ferramenta de auxílio metodológico para pesquisa na Hemeroteca Di
 Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.
 license: MIT
 Python 3.11.9
-email: ericbrasiln@protonmail.com
+email: ericbrasiln@proton.me
 '''
 # Importação de bibliotecas, módulos e funções
 from parameters import set_journal, set_place, set_search, set_time, human_behavior
@@ -31,17 +31,8 @@ date = now.strftime("%Y-%m-%d")
 date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 
 # Imprimir informações gerais sobre o programa
-print('=-'*50)
-print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'
-    '\n- Desenvolvida por Eric Brasil como parte de pesquisa acadêmica da área de História Digital.\n'
-    '\n- Essa ferramenta não possui fins lucrativos nem pretende acessar dados sigilosos ou alterar informações nos servidores da instituição.\n'
-    '\n- Tem como objetivo auxiliar pesquisadores e pesquisadoras a registrarem com precisão as etapas de sua pesquisa e garantir o rigor metodológico. Portanto, é uma ferramenta heurística digital.\n'
-    '\n- Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab e do LABHDUFBA.\n'
-    '\n- Os resultados da pesquisa foram publicados na revista História da Historiografia (https://doi.org/10.15848/hh.v15i40.1904) e seu códigone dataset estão disponibilizados publicamente, com licença MIT.\n'
-    '\n- Buscamos não sobrecarregar os servidores da Biblioteca Nacional e respeitar os termos de uso.\n'
-    '\n- A busca foi elaborada a partir das demandas de pesquisa pessoais e serão explicadas no artigo.\n'
-    '\n- A partir dos parâmetros de busca definidos pelo usuário, o programa retorna todos os acervos dos jornais com alguma ocorrência, até o limite de 100 jornais (segunda página de resultados).\n')
-print('=-'*50)
+print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'\
+        '\n- Para mais informações, acesse o repositório do projeto no GitHub: \033[4;36mhttps://github.com/ericbrasiln/pyHDB\033[0m ou entre em contato: \033[4;36mericbrasil.com.br/contact\033[0m\n')
 
 # Opção para remover a impressão de logs na tela
 os.environ['WDM_LOG_LEVEL'] = '0'
@@ -68,17 +59,14 @@ driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
     '''
 })
 
-# Passa a url para o driver
 driver.get(url)
 
 # Imprime informações sobre os parâmetros de busca
 print(
-      '\n\033[3;36m-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Definindo os parâmetros da busca -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\033[0m\n'
-      '\nNessa versão do programa, a busca inicial é estabelecida pela opção local.\n'
-      'É possível incluir uma opção de recorte temporal em seguida.\n'
-      'A busca será efetuada em todos os acervos existentes para essa configuração.'
+      '\n\033[3;36m-=- Parâmetros da busca -=-\033[0m\n'
+        '\nOBS: Nessa versão do programa, a busca inicial é estabelecida pela opção local e o parâmetro "Periódico" está definido como "Todos" por padrão.'
       )
-print('=-'*50)
+print('\n')
 print('\n\033[4;36m1 - Local\033[0m')
 print('Orientações para busca:\n'
       '- O termo deve ser idêntico às opções listadas na página da HDB;\n'
@@ -92,7 +80,7 @@ print('Orientações para busca:\n'
       '- É possível buscar todos os periódicos digitando "Todos";\n\
             Esse parâmetro é "case sensitive".\n')
 period = str(input('Digite o período de busca: '))
-#call the function
+# Testa se o período está no formato correto
 test_period = validate_period(period)
 if test_period == False:
     print('\033[1;31mO período informado não corresponde ao padrão da HDB.\n\
@@ -100,16 +88,14 @@ if test_period == False:
     exit()
 #Nessa versão, a busca acontecerá em todos os periódicos existentes
 #de acordo com a definição de Local e Período.
-print('\n\033[4;36m3 - Periódico\033[0m: Todos')
+print('\n\033[4;36m3 - Periódicos\033[0m: Todos')
 journal = 'Todos'
 print('\n\033[4;36m4 - Termo da busca\033[0m')
 print('Orientações para busca:\n'
       '- Coloque o termo entre aspas duplas para expressões exatas;\n'
-      '- Não use acentos ou caracteres especiais;\n'
+      '- Evite acentos ou caracteres especiais;\n'
       '- É recomendado não utilizar mais do que três palavras.\n')
 search_term = str(input('Digite o termo de busca: '))
-
-# 5 - Formato de saída
 print('\n\033[4;36m5 - Formato de saída\033[0m')
 print('1 - CSV (padrão)\n2 - CSV e JSON')
 try:
@@ -119,21 +105,22 @@ try:
         output_mode = 1
 except Exception:
     output_mode = 1
-
-# 6 - Baixar imagens ou coletar apenas metadados
 print('\n\033[4;36m6 - Download de imagens\033[0m')
-print('Deseja baixar as imagens das páginas encontradas?\n'
-      '- Responda "s" para baixar imagens (padrão);\n'
-      '- Responda "n" para coletar apenas metadados (sem imagens).')
-resp_img = input('Baixar imagens? [S/n]: ').strip().lower()
-download_imagens = False if resp_img == 'n' else True
+print('1 - Baixar imagens (padrão);\n2 - Coletar apenas metadados (sem imagens).')
+try:
+    resp_img = int(input('Escolha a opção [1/2]: ') or '1')
+    if resp_img not in (1, 2):
+        print('Opção inválida. Usando padrão: 1 - baixar imagens.')
+        resp_img = 1
+except Exception:
+    resp_img = 1
+download_imagens = True if resp_img == 1 else False
 if not download_imagens:
-    print('\033[1;33m[Modo metadados]\033[0m As imagens não serão baixadas; somente metadados serão coletados.')
+    print('\n\033[1;33m[Modo metadados]\033[0m As imagens não serão baixadas; somente metadados serão coletados.')
 
 option = driver.find_element(By.XPATH, '//*[@id="RadTabStrip1"]/div')
 lis_options = option.find_elements(By.TAG_NAME, 'li')
 #Seleciona a opção inicial de buscar pelo Local e clica no botão de busca
-#[0]=periódico [1]=período [2]=local
 lis_local = lis_options[2]
 lis_local.click()
 
@@ -177,16 +164,12 @@ code_search = 'pasta=ano%20'+period[:3]+'&pesq='+search_term
 # a variável 'code_search'
 if url[-5:] == 'Pesq=':
     url = url[:-5] + code_search
-    # passa url para o driver
     driver.get(url)
-    #refresh a página
     driver.refresh()
-    #Aguarda carregar a página
-    print('\n\033[5;91m- Aguardando os resultados serem carregados...\033[0m')
+    print('\n\033[1;91m- Aguardando os resultados serem carregados...\033[0m')
     time.sleep(10)
 # Se a página de resultado carregar normalmente:
 else:
-      #Aguarda carregar a página
       print('\n\033[1;91m- Aguardando os resultados serem carregados...\033[0m')
       load_pag = WebDriverWait(driver, 360).until(EC.invisibility_of_element((By.ID, 'RadAjaxLoadingPanel1')))
       time.sleep(5)
@@ -198,29 +181,27 @@ search = search.replace(' ','-')
 final_search = os.path.join(search, date)
 directory = os.path.join('HDB', final_search)
 
-# Chamar a função para encontrar as numerações das bibliotecas de cada jornal e verifica se há ocorrências
+# Chamar a função para encontrar as numerações dos acervos de cada jornal e verifica se há ocorrências
 l_bibs = get_bibs(driver, directory, place, period)
 # Função para tratar a lista de acervos
 final_bibs = bib_list(l_bibs)
-print(f'\n- Encontradas {len(final_bibs)} bibliotecas com ocorrências.')
+print(f'\n- Encontrados {len(final_bibs)} acervos com ocorrências.\n')
 # Chamar a função para encontrar informações gerais da busca
 if len(final_bibs) > 0:
       infos_dict = get_infos(driver)
-      print(f'\n- Total de acervos com ocorrências (máx. de 100): {len(l_bibs)}\n')
 else:
       pass
 # Se a lista não possuir valores, resultados não foram encontrados e o programa se encerra.
 if len(l_bibs) == 0:
-      print('\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m'\
-            '\n- Se esse resultado for incoerente com os resultados encontrados diretamente'\
-            'na página da HDB, tente novamente. Se o erro persistir, crie uma issue no repositório'\
-            'da ferramenta: \033[4;36mhttps://github.com/ericbrasiln/pyHDB/issues \033[0m')
+      print('\033[1;36m-=- Fim da coleta. -=-\033[0m'\
+            '\n- Se esse resultado for incoerente com os resultados encontrados diretamente na página da HDB, tente novamente. Se o erro persistir, crie uma issue no repositório da ferramenta: \033[4;36mhttps://github.com/ericbrasiln/pyHDB/issues \033[0m')
       driver.quit()
 else:
       # Chamar a função para criar o relatório geral da busca
       report_search(directory, search_term, date_time, l_bibs, place, period, journal, infos_dict)
       # Chamar função para realizar a busca e a raspagem em cada acervo
       journal_search(final_bibs, date, search_term, directory, output_mode=output_mode, download_imagens=download_imagens)
-      print('\n\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m\n')
+      print('\n\033[1;36m=-=-=-=-=-Fim da coleta.=-=-=-=-=-\033[0m\n')
+
 # Fechar todos os navegadores abertos 
 driver.quit()

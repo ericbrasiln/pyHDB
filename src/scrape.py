@@ -124,7 +124,7 @@ def _fast_forward_to(driver, target: int, total: int, log_every: int = 5,
         raise FastForwardError(f"Contador inesperado: '{label}'")
 
     if target <= cur:
-        print(f"[Retomada] Já estamos em {cur}.")
+        print(f"Já estamos em {cur}.")
         return
 
     start = cur
@@ -132,7 +132,7 @@ def _fast_forward_to(driver, target: int, total: int, log_every: int = 5,
     started_at = time.time()
 
     # header simples (opcional)
-    print(f"[Retomada] Avançando de {start} para {target}…")
+    print(f"Avançando de {start} para {target}…")
 
     def _render_line(cur_now: int):
         done = cur_now - start
@@ -150,7 +150,7 @@ def _fast_forward_to(driver, target: int, total: int, log_every: int = 5,
         )
         sys.stdout.flush()
 
-    # já imprime o estado inicial
+    # imprime o estado inicial
     _render_line(cur)
 
     for step_idx in range(steps_total):
@@ -217,7 +217,7 @@ def _fast_forward_to(driver, target: int, total: int, log_every: int = 5,
     # termina a linha com quebra
     sys.stdout.write("\n")
     sys.stdout.flush()
-    print(f"[Retomada] Alcançada ocorrência {target}/{total}.")
+    print(f"Alcançada ocorrência {target}/{total}.")
 
 
 # =========================
@@ -305,7 +305,7 @@ def scrapeDados(
 
     target = max(1, int(start_from) if start_from else 1)
     if target > tot:
-        print(f"[Retomada] start_from ({target}) > total ({tot}). Nada a fazer para este acervo.")
+        print(f"Ocorrência inicial ({target}) > total ({tot}). Nada a fazer para este acervo.")
         driver.quit()
         return
 
@@ -334,8 +334,6 @@ def scrapeDados(
             cur, tot = read_counter()
 
     # ===== Zoom (somente se iremos baixar imagens e não houver restrição) =====
-    if not download_imagens:
-        print("[Modo metadados] Download de imagens desativado por opção do usuário.")
     if warning is not None:
         print('Jornal com restrição de uso. Download de imagens será pulado.')
     elif download_imagens:
@@ -373,13 +371,12 @@ def scrapeDados(
                 year, issue = 'Ano NA', 'Edição   NA'
             link = f"http://memoria.bn.br/docreader/{final_bib}/{pag}"
 
-            print('=-' * 50)
+            print('=-' * 30)
             print(f"[{i}/{tot}]\n"
                   f"- Data e hora da busca: {date_time}\n"
                   f"- Termo da pesquisa: {term}\n"
                   f"- Acervo: {folder}\n- Ano: {year[4:] if len(year) >= 4 else year}\n"
                   f"- Edição: {issue[9:] if len(issue) >= 9 else issue}\n- Página: {p}\n- Link: {link}\n")
-            print('=-' * 50)
 
             # imagem (só se permitido e desejado)
             if (warning is not None) or (not download_imagens):
@@ -421,17 +418,15 @@ def scrapeDados(
         shutil.copyfile(cache_path, csv_name)
         try:
             os.remove(cache_path)
-            print(f"[OK] Cache removido: {cache_path}")
         except Exception as rm_err:
             print(f"[Aviso] Não foi possível remover o cache {cache_path}: {rm_err}")
 
     except Exception as e:
-        print(f'- Não foi possível completar a raspagem.\n- Salvando relatório de erro. Detalhe: {e}')
+        print(f'[Aviso] Não foi possível completar a coleta.\n- Salvando relatório de erro. Detalhe: {e}')
         try:
             report_erro(directory, search, [final_bib], date_time)
         except Exception:
             pass
-        # mantém o cache para retomada
-        print('=-' * 50)
+        print('=-' * 30)
 
     driver.quit()
