@@ -124,7 +124,7 @@ def _fast_forward_to(driver, target: int, total: int, log_every: int = 5,
         raise FastForwardError(f"Contador inesperado: '{label}'")
 
     if target <= cur:
-        print(f"[Retomada] Já estamos em {cur}.")
+        print(f"Já estamos em {cur}.")
         return
 
     start = cur
@@ -305,7 +305,7 @@ def scrapeDados(
 
     target = max(1, int(start_from) if start_from else 1)
     if target > tot:
-        print(f"[Retomada] start_from ({target}) > total ({tot}). Nada a fazer para este acervo.")
+        print(f"Ocorrência inicial ({target}) > total ({tot}). Nada a fazer para este acervo.")
         driver.quit()
         return
 
@@ -377,7 +377,6 @@ def scrapeDados(
                   f"- Termo da pesquisa: {term}\n"
                   f"- Acervo: {folder}\n- Ano: {year[4:] if len(year) >= 4 else year}\n"
                   f"- Edição: {issue[9:] if len(issue) >= 9 else issue}\n- Página: {p}\n- Link: {link}\n")
-            print('=-' * 30)
 
             # imagem (só se permitido e desejado)
             if (warning is not None) or (not download_imagens):
@@ -423,7 +422,7 @@ def scrapeDados(
             print(f"[Aviso] Não foi possível remover o cache {cache_path}: {rm_err}")
 
     except Exception as e:
-        print(f'- Não foi possível completar a raspagem.\n- Salvando relatório de erro. Detalhe: {e}')
+        print(f'[Aviso] Não foi possível completar a coleta.\n- Salvando relatório de erro. Detalhe: {e}')
         try:
             report_erro(directory, search, [final_bib], date_time)
         except Exception:

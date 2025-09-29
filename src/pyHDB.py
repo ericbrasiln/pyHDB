@@ -31,10 +31,8 @@ date = now.strftime("%Y-%m-%d")
 date_time = now.strftime("%Y-%m-%d_%H-%M-%S")
 
 # Imprimir informações gerais sobre o programa
-print('=-' * 30)
 print('\033[1;36mpyHDB - \033[0m\033[3;36mFerramenta de auxílio metodológico para pesquisa na Hemeroteca Digital Brasileira (BN).\033[0m\n'\
         '\n- Para mais informações, acesse o repositório do projeto no GitHub: \033[4;36mhttps://github.com/ericbrasiln/pyHDB\033[0m ou entre em contato: \033[4;36mericbrasil.com.br/contact\033[0m\n')
-print('=-' * 30)
 
 # Opção para remover a impressão de logs na tela
 os.environ['WDM_LOG_LEVEL'] = '0'
@@ -65,10 +63,10 @@ driver.get(url)
 
 # Imprime informações sobre os parâmetros de busca
 print(
-      '\n\033[3;36m-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Definindo os parâmetros da busca -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\033[0m\n'
+      '\n\033[3;36m-=- Parâmetros da busca -=-\033[0m\n'
         '\nOBS: Nessa versão do programa, a busca inicial é estabelecida pela opção local e o parâmetro "Periódico" está definido como "Todos" por padrão.'
       )
-print('=-' * 30)
+print('\n')
 print('\n\033[4;36m1 - Local\033[0m')
 print('Orientações para busca:\n'
       '- O termo deve ser idêntico às opções listadas na página da HDB;\n'
@@ -90,7 +88,7 @@ if test_period == False:
     exit()
 #Nessa versão, a busca acontecerá em todos os periódicos existentes
 #de acordo com a definição de Local e Período.
-print('\n\033[4;36m3 - Periódico\033[0m: Todos')
+print('\n\033[4;36m3 - Periódicos\033[0m: Todos')
 journal = 'Todos'
 print('\n\033[4;36m4 - Termo da busca\033[0m')
 print('Orientações para busca:\n'
@@ -108,7 +106,7 @@ try:
 except Exception:
     output_mode = 1
 print('\n\033[4;36m6 - Download de imagens\033[0m')
-print('1 - baixar imagens (padrão);\n2 - Coletar apenas metadados (sem imagens).')
+print('1 - Baixar imagens (padrão);\n2 - Coletar apenas metadados (sem imagens).')
 try:
     resp_img = int(input('Escolha a opção [1/2]: ') or '1')
     if resp_img not in (1, 2):
@@ -118,7 +116,7 @@ except Exception:
     resp_img = 1
 download_imagens = True if resp_img == 1 else False
 if not download_imagens:
-    print('\033[1;33m[Modo metadados]\033[0m As imagens não serão baixadas; somente metadados serão coletados.')
+    print('\n\033[1;33m[Modo metadados]\033[0m As imagens não serão baixadas; somente metadados serão coletados.')
 
 option = driver.find_element(By.XPATH, '//*[@id="RadTabStrip1"]/div')
 lis_options = option.find_elements(By.TAG_NAME, 'li')
@@ -168,7 +166,7 @@ if url[-5:] == 'Pesq=':
     url = url[:-5] + code_search
     driver.get(url)
     driver.refresh()
-    print('\n\033[5;91m- Aguardando os resultados serem carregados...\033[0m')
+    print('\n\033[1;91m- Aguardando os resultados serem carregados...\033[0m')
     time.sleep(10)
 # Se a página de resultado carregar normalmente:
 else:
@@ -195,7 +193,7 @@ else:
       pass
 # Se a lista não possuir valores, resultados não foram encontrados e o programa se encerra.
 if len(l_bibs) == 0:
-      print('\033[1;36m=-=-=-=-=-Fim da raspagem.=-=-=-=-=-\033[0m'\
+      print('\033[1;36m-=- Fim da coleta. -=-\033[0m'\
             '\n- Se esse resultado for incoerente com os resultados encontrados diretamente na página da HDB, tente novamente. Se o erro persistir, crie uma issue no repositório da ferramenta: \033[4;36mhttps://github.com/ericbrasiln/pyHDB/issues \033[0m')
       driver.quit()
 else:

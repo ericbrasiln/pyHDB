@@ -67,7 +67,6 @@ def journal_search(list_of_bibs, date, search_term, directory, output_mode: int 
             last = _last_occurrence_from_csv(cache_name)
             start_from = last + 1
             # imprimir nome do cache mas fatiando o caminho para mostrar só o nome do arquivo
-            print(f"Cache CSV detected ({os.path.basename(cache_name)}). Last occurrence = {last}. Resuming at {start_from}.")
             print(f"CSV {os.path.basename(cache_name)} em cache detectado.")
             scrapeDados(
                 url, safe_search, journal, base_path, date, date_time,
