@@ -4,9 +4,15 @@ author: Eric Brasil
 description: Funções relacionadas à definição de parâmetros para a pesquisa
 '''
 import time
+import random
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
+
+def human_behavior(driver):
+      time.sleep(random.uniform(2, 5))  # delay aleatório para simular comportamento humano
+      driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+      time.sleep(random.uniform(1, 3))
 
 def set_place(driver, local):
     '''
