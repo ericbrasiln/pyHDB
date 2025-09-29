@@ -12,11 +12,13 @@ Os resultados da pesquisa estão publicados em artigo científico avaliado por p
 
 Eric Brasil é professor do curso de licenciatura em História e do Bacharelado Interdisciplinar em Humanidades no Instituto de Humanidades e Letras da Universidade da Integração Internacional da Lusofonia Afro-brasileira (IHLM/UNILAB), campus dos Malês.
 
+Professor do mestrado em Humanidades Digitais da Universidade Federal Rural do Rio de Janeiro (UFRRJ).
+
 Doutor (2016) e Mestre (2011) pelo Programa de Pós­-Graduação em História Social da Universidade Federal Fluminense.
 
-Investigador Visitante no [Laboratório de Humanidades Digitais da FCSH-NOVA](https://dhlab.fcsh.unl.pt/), Lisboa.
+Investigador Visitante no [Laboratório de Humanidades Digitais da FCSH-NOVA](https://dhlab.fcsh.unl.pt/), Lisboa entre 2022 e 2023.
 
-Editor do [Programming Historian em português](https://programminghistorian.org/pt).
+Editor-chefe do [Programming Historian em português](https://programminghistorian.org/pt).
 
 Pesquisador do [Laboratório de Humanidades Digitais da UFBA](https://labhd.ufba.br).
 
@@ -25,6 +27,5 @@ Membro fundador do GT Nacional Emancipações e Pós-­Abolição da Anpuh.
 ### Contato
 
 - email: [ericbrasiln@proton.me](mailto:ericbrasiln@proton.me)
-- site: [ericbrasiln.github.io](https://ericbrasiln.github.io)
-- Twitter: [@ericbrasiln](https://twitter.com/ericbrasiln)
+- site: [ericbrasil.com.br](https://ericbrasil.com.br)
 - GitHub: [ericbrasiln](https://github.com/ericbrasiln)
