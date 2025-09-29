@@ -1,12 +1,24 @@
 cff-version: 1.2.0
-message: "Se você utilizar esse programa, por favor cite como referenciado abaixo."
-authors:
-  - family-names: Brasil
-    given-names: Eric
-    orcid: https://orcid.org/0000-0001-5067-8475
-title: "pyHDB: Ferramenta heurística para a Hemeroteca Digital Brasileira"
-type: "software"
-version: 2.0
-doi: "https://doi.org/10.5281/zenodo.5696670"
+title: "pyHDB – Ferramenta Heurística para a Hemeroteca Digital Brasileira"
+version: "2.0"
+doi: "10.5281/zenodo.5696671"
 date-released: 2025-09-29
-url: "https://github.com/ericbrasiln/pyHDB"
+authors:
+  - family-names: "Brasil"
+    given-names: "Eric"
+    orcid: "https://orcid.org/0000-0001-5067-8475"
+repository-code: "https://github.com/ericbrasiln/pyHDB"
+url: "https://doi.org/10.5281/zenodo.5696671"
+license: "MIT"
+abstract: |
+  A pyHDB é uma ferramenta heurística para auxiliar pesquisas na Hemeroteca Digital Brasileira (BN). Desenvolvida no âmbito da História Digital, permite a raspagem de dados de periódicos históricos, oferecendo suporte a cache e retomada automática, exportação em múltiplos formatos (CSV, JSON, JSONL) e relatórios detalhados. A versão 2.0 introduz melhorias de robustez, flexibilidade e documentação.
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Brasil"
+      given-names: "Eric"
+  title: "pyHDB – Ferramenta Heurística para a Hemeroteca Digital Brasileira"
+  version: "2.0"
+  year: 2025
+  doi: "10.5281/zenodo.5696671"
+  url: "https://doi.org/10.5281/zenodo.5696671"
