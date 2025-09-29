@@ -11,7 +11,7 @@ date: 2022-05-27
 <img src="img/banner.png" alt="Banner da pyHDB">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![DOI](https://zenodo.org/badge/413270192.svg)](https://zenodo.org/badge/latestdoi/413270192)
-Ferramenta de auxílio metodológico para pesquisa na [Hemeroteca Digital Brasileira](memoria.bn.br/hdb) da Biblioteca Nacional.
+Ferramenta de auxílio metodológico para pesquisa na [Hemeroteca Digital Brasileira](https://memoria.bn.br/hdb) da Biblioteca Nacional.
 
 Desenvolvida por [Eric Brasil](https://ericbrasiln.github.io) como parte de pesquisa acadêmica da área de História Digital com participação direta de Gabriel Andrade.
 
@@ -21,7 +21,7 @@ Tem como objetivo auxiliar pesquisadores e pesquisadoras no processo de document
 
 Seu desenvolvimento está no âmbito das pesquisas realizadas no curso de História do IHLM/Unilab e do [LABHDUFBA](https://labhdufba.github.io).
 
-Os resultados da pesquisa estão publicados em artigo científico avaliado por pares na [Revista História da Historiografia](https://www.historiadahistoriografia.com.br/) e pode ser [acessado aqui](https://www.historiadahistoriografia.com.br/revista/article/view/1904)[^1] e seu código e documentação estão disponíveis publicamente, com [licença MIT](LICENSE).
+Os resultados da pesquisa estão publicados em artigo científico avaliado por pares na [Revista História da Historiografia](https://www.historiadahistoriografia.com.br/) e pode ser [acessado aqui](https://www.historiadahistoriografia.com.br/revista/article/view/1904)[^1] e seu código e documentação estão disponíveis publicamente, com [licença MIT](https://ericbrasil.com.br/pyHDB/license/).
 
 [^1]: BRASIL, Eric. pyHDB - Ferramenta Heurística para a Hemeroteca Digital Brasileira: utilizando técnicas de web scraping para a pesquisa em História. _História da Historiografia: International Journal of Theory and History of Historiography_, Ouro Preto, v. 15, n. 40, p. 186–217, 2022. DOI: 10.15848/hh.v15i40.1904.
 
@@ -74,7 +74,7 @@ Para baixar a ferramenta para seu computador, existem duas formas. Para ambos os
 
 Para baixar o arquivo `pyHDB.zip`, após clicar em `Code`, clique em `Download ZIP` e salve em seu computador.
 
-![Download ZIP](pyHDB-docs/docs/img/gh_2.png)
+![Download ZIP](img/gh_2.png)
 
 Em seguida, descompacte o arquivo no local de sua preferência.
 
